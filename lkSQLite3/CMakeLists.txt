@@ -1,0 +1,45 @@
+target_sources(${PROJECT_NAME} 
+PRIVATE
+    internal_tools.cpp
+    internal_tools.h
+    internal_Variant.cpp
+    internal_Variant.h
+    lkDateTime.cpp
+    lkDateTime.h
+    lkSQL3Common.cpp
+    lkSQL3Common.h
+    lkSQL3Database.cpp
+    lkSQL3Database.h
+    lkSQL3Exception.cpp
+    lkSQL3Exception.h
+    lkSQL3Field.cpp
+    lkSQL3FieldData.cpp
+    lkSQL3FieldData.h
+    lkSQL3FieldDef.cpp
+    lkSQL3FieldDef.h
+    lkSQL3Field.h
+    lkSQL3FindTable.cpp
+    lkSQL3FindTable.h
+    lkSQL3IndexDef.cpp
+    lkSQL3IndexDef.h
+    lkSQL3QuerySet.cpp
+    lkSQL3QuerySet.h
+    lkSQL3RecordSet.cpp
+    lkSQL3RecordSet.h
+    lkSQL3Statement.cpp
+    lkSQL3Statement.h
+    lkSQL3TableDef.cpp
+    lkSQL3TableDef.h
+    lkSQL3TableSet.cpp
+    lkSQL3TableSet.h
+    lkSQL3TblFieldInit.cpp
+    lkSQL3TblFieldInit.h
+    lkSQL3TempDB.cpp
+    lkSQL3TempDB.h
+    lkSQL3Validators.cpp
+    lkSQL3Validators.h
+    lkSQL3Verify.cpp
+    lkSQL3Verify.h
+    lkTSqliteMaster.cpp
+    lkTSqliteMaster.h
+)

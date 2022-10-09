@@ -1,0 +1,251 @@
+/* ********************************************************************************
+ * MoviesCatalog - a Programm to catalogue a private collection of Movies using SQLite3
+ * Copyright (C) 2022 by Laurens Koehoorn (lhksoft)
+ * 
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ * 
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ * 
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * ********************************************************************************/
+#include "DStorage.h"
+#include "XPMs.h"
+#include <wx/sizer.h>
+
+wxIMPLEMENT_ABSTRACT_CLASS2(DStorage, lkSQL3RecordDialog, TStorage)
+
+DStorage::DStorage(lkSQL3Database* pDB) : lkSQL3RecordDialog(pDB), TStorage(pDB), CStorage()
+{
+	m_nID_NextID = wxWindow::NewControlId(1);
+	m_nID_Search = wxWindow::NewControlId(1);
+	m_nID_SearchNext = wxWindow::NewControlId(1);
+	m_nID_SearchPrev = wxWindow::NewControlId(1);
+}
+
+bool DStorage::Create(wxWindow* parent)
+{
+	if ( !lkSQL3RecordDialog::Create(parent, CStorage::GetBackground(), wxT("Storages Dialog"), wxDefaultPosition, wxSize(531, 258), wxDEFAULT_DIALOG_STYLE) )
+		return false;
+	SetMinClientSize(wxSize(515, 170));
+	SetStatusText(wxEmptyString, 1);
+
+	// this forces to open the recordset and initialize its internal fields
+	(void)GetRecordset();
+
+	if ( CStorage::CreateCanvas(this, this) )
+	{
+		wxSizer* sz = GetSizer();
+		sz->Add(CreateSeparatedButtonSizer(wxOK | wxCANCEL), 0, wxLEFT | wxBOTTOM | wxRIGHT | wxEXPAND, 10);
+		Layout();
+
+		return true;
+	}
+
+	return false;
+}
+
+wxWindowID DStorage::GetID_NextID() const
+{
+	return m_nID_NextID;
+}
+wxWindowID DStorage::GetID_Search() const
+{
+	return m_nID_Search;
+}
+wxWindowID DStorage::GetID_SearchNext() const
+{
+	return m_nID_SearchNext;
+}
+wxWindowID DStorage::GetID_SearchPrev() const
+{
+	return m_nID_SearchPrev;
+}
+
+// Overrides of base-class lkSQL3RecordDialog
+////////////////////////////////////////////////////////
+
+wxToolBar* DStorage::OnCreateToolBar(long style, wxWindowID id, const wxString& name)
+{
+	wxToolBar* tb = lkSQL3RecordDialog::OnCreateToolBar(style, id, name);
+	if ( tb )
+	{
+		tb->AddSeparator();
+		tb->AddTool(GetID_NextID(), wxT(""), Get_Group_Xpm(), wxT("Find an ID"));
+		tb->AddSeparator();
+		tb->AddTool(GetID_Search(), wxT(""), Get_Search_Xpm(), wxT("Start a Search"));
+		tb->AddTool(GetID_SearchNext(), wxT(""), Get_SearchNext_Xpm(), wxT("Search Next"));
+		tb->AddTool(GetID_SearchPrev(), wxT(""), Get_SearchPrev_Xpm(), wxT("Search Back"));
+	}
+	return tb;
+}
+
+//virtual
+void DStorage::BindButtons()
+{
+	lkSQL3RecordDialog::BindButtons();
+
+	Bind(wxEVT_UPDATE_UI, &DStorage::OnUpdateNextID, this, GetID_NextID());
+	Bind(wxEVT_UPDATE_UI, &DStorage::OnUpdateFind, this, GetID_Search());
+	Bind(wxEVT_UPDATE_UI, &DStorage::OnUpdateFindNext, this, GetID_SearchNext());
+	Bind(wxEVT_UPDATE_UI, &DStorage::OnUpdateFindPrev, this, GetID_SearchPrev());
+
+	Bind(wxEVT_TOOL, &DStorage::OnNextID, this, GetID_NextID());
+	Bind(wxEVT_TOOL, &DStorage::OnFind, this, GetID_Search());
+	Bind(wxEVT_TOOL, &DStorage::OnFindNext, this, GetID_SearchNext());
+	Bind(wxEVT_TOOL, &DStorage::OnFindPrev, this, GetID_SearchPrev());
+}
+
+//virtual
+bool DStorage::Validate()
+{
+	lkSQL3RecordSet* pSet = GetBaseRecordset();
+	m_bReqAdd = (pSet && pSet->IsAdding());
+	return lkSQL3RecordDialog::Validate();
+}
+
+//virtual
+bool DStorage::TransferDataToWindow()
+{
+	CStorage::stTransferDataToWindow(m_bInitial);
+	return lkSQL3RecordDialog::TransferDataToWindow();
+}
+
+//virtual
+wxString DStorage::GetDefaultOrder() const
+{
+	return wxString(wxT("[ROWID]"));
+}
+
+//virtual
+lkSQL3RecordSet* DStorage::GetBaseSet()
+{
+	return static_cast<lkSQL3RecordSet*>(this);
+}
+
+void DStorage::DoThingsBeforeAdd()
+{
+	CStorage::SetStorageFocus();
+}
+
+//virtual
+bool DStorage::DoUpdateRecordFind()
+{
+	return (m_pSet) ? (!m_pSet->IsAdding() && !m_pSet->IsEmpty()) : false;
+}
+//virtual
+bool DStorage::DoUpdateRecordFindNext()
+{
+	return (m_pSet && !m_pSet->IsEmpty() && !m_pSet->IsAdding() && m_pSet->m_GotFindNext);
+}
+//virtual
+bool DStorage::DoUpdateRecordFindPrev()
+{
+	return (m_pSet && !m_pSet->IsEmpty() && !m_pSet->IsAdding() && m_pSet->m_GotFindPrev);
+}
+
+
+// Overrides of base-class CStorage
+////////////////////////////////////////////////////////
+
+//virtual
+bool DStorage::IsMediumChanged() const
+{
+	return false;
+}
+//virtual
+bool DStorage::IsLocationChanged() const
+{
+	return false;
+}
+
+lkSQL3Database* DStorage::GetDBase()
+{
+	return lkSQL3RecordDialog::GetDB();
+}
+
+lkSQL3RecordSet* DStorage::GetBaseRecordset()
+{
+	return GetBaseSet();
+}
+
+//virtual
+lkSQL3FieldData_Text* DStorage::GetFldStorage()
+{
+	return TStorage::m_pFldStorage;
+}
+//virtual
+lkSQL3FieldData_Int* DStorage::GetFldLocation()
+{
+	return TStorage::m_pFldLocation;
+}
+//virtual
+lkSQL3FieldData_Int* DStorage::GetFldMedium()
+{
+	return TStorage::m_pFldMedium;
+}
+//virtual
+lkSQL3FieldData_Real* DStorage::GetFldCreation()
+{
+	return TStorage::m_pFldCreation;
+}
+//virtual
+lkSQL3FieldData_Int* DStorage::GetFldInfo()
+{
+	return TStorage::m_pFldInfo;
+}
+
+// Event Handling
+////////////////////////////////////////////////////////
+
+void DStorage::OnUpdateNextID(wxUpdateUIEvent& event)
+{
+	lkTransTextCtrl* t = CStorage::m_pStorageCtrl;
+	MediumBox* m = CStorage::m_pMedium;
+
+	bool bEnable = TStorage::IsAdding(); // only allow when adding new data
+	if ( bEnable )
+		bEnable = (m && (m->GetSelectedLParam() != 0)); // a medium should be selected
+	if ( bEnable )
+		bEnable = (t && t->GetValue().IsEmpty()); // must be empty to get it work
+
+	event.Enable(bEnable);
+}
+
+void DStorage::OnNextID(wxCommandEvent& event)
+{
+	lkTransTextCtrl* t = CStorage::m_pStorageCtrl;
+	MediumBox* m = CStorage::m_pMedium;
+
+	bool bEnable = TStorage::IsAdding(); // only allow when adding new data
+	if ( bEnable )
+		bEnable = (m && (m->GetSelectedLParam() != 0)); // a medium should be selected
+	if ( bEnable )
+		bEnable = (t && t->GetValue().IsEmpty()); // must be empty to get it work
+
+	if ( !bEnable )
+		return; // just to be sure
+
+	wxUint32 medium = static_cast<wxUint32>(m->GetSelectedLParam());
+	wxString volume = (medium > 0) ? TStorage::GetNextLabel(GetDBase(), medium) : wxT("");
+	if ( !volume.IsEmpty() )
+		t->SetValue(volume);
+}
+
+void DStorage::OnFind(wxCommandEvent& WXUNUSED(event))
+{
+	TStorage* pRS = dynamic_cast<TStorage*>(GetBaseSet());
+	wxUint64 _row = DlgStorageFind::FindStorage(this, pRS);
+
+	if ( _row > 0 )
+	{
+		pRS->Move(_row);
+		lkSQL3RecordDialog::UpdateData(false);
+	}
+}

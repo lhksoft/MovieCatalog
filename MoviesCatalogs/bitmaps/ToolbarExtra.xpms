@@ -1,0 +1,360 @@
+/* ******************************************************************************** */
+/* custom combined XPM-file, written by "RcImage" at (Saturday) 30-Jul-2022 12:40:46  */
+/* include this file into your project's CPP file                                   */
+/* ******************************************************************************** */
+
+/* ***************************************************************** */
+/* file title : 'icn_copy_24px' */
+/* ID : 'COPY_24' */
+static const char* COPY_24_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"24 24 25 1",
+"5 c Black",
+"$ c #F7F7F7",
+"4 c #F7F7FF",
+"= c #E7EFEF",
+"X c #BDC6C6",
+"6 c #636363",
+"2 c #EFF7F7",
+"o c #BDBDBD",
+"@ c None",
+"3 c #7B8484",
+": c #7B7B7B",
+"O c #C6C6C6",
+"> c #292929",
+". c #B5BDBD",
+"- c #CECECE",
+"+ c #D6D6D6",
+"& c #DEDEDE",
+"1 c #DEDEE7",
+"; c #C6CECE",
+"  c #9C9C9C",
+"* c #E7E7E7",
+", c #E7E7EF",
+"% c #EFEFEF",
+"# c #525252",
+"< c #EFEFF7",
+/* pixels */
+" .XXXXXoXoO+@@@@@@@@@@@@",
+"#$%%%%%%$+&O&@@@@@@@@@@@",
+"#$*&&&&&$.$&o&@@@@@@@@@@",
+"#$******$o$$&O+@@@@@@@@@",
+"#$=*****$o-;+-:@@@@@@@@@",
+"#$%*****%%**%+>@@@@@@@@@",
+"#$%,,,,,****%+oXoXoO+@@@",
+"#$%%%%%%%%%%%+&%%$+&O&@@",
+"#$<%%%%%%%%%<+$1&$.$&X&@",
+"#$$%%%%%%%%%$+$**$o$$&O&",
+"#$$2<<2<<2<2$+$**$o-;+-3",
+"#$$$$$$$$$$$$+$**%%**%+#",
+"#$$$$$$$$$$$$+$%,,,**%+#",
+"#$4$$$$$$$$$4+$%%%%%%%+#",
+"#$4$$$$$$$$$4+$%%%%%%<+#",
+"#$$$$$$$$$$$$+$%%%%%%$+#",
+"#+++++++++++++$$<<2<<$+#",
+">55555555#+$$$$$$$$$$$+#",
+"@@@@@@@@@#+$$$$$$$$$$$+#",
+"@@@@@@@@@#+4$$$$$$$$$4+#",
+"@@@@@@@@@#+4$$$$$$$$$4+#",
+"@@@@@@@@@#-4$$$$$$$$$4+#",
+"@@@@@@@@@#+++++++++++++#",
+"@@@@@@@@@>55555555555556"
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_RS_FILTER' */
+/* ID : 'FILTER' */
+static const char* FILTER_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 4 1",
+". c Black",
+"  c None",
+"X c #008080",
+"o c #C0C0C0",
+/* pixels */
+"                ",
+"                ",
+" .............. ",
+" .XooooooooXXX. ",
+"  .XoooooooXX.  ",
+"   .XoooooXX.   ",
+"    .XoooXX.    ",
+"     .oooX.     ",
+"      .oo.      ",
+"      .oo.      ",
+"      .XX.      ",
+"      .XX.      ",
+"      ....      ",
+"                ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_RS_TOGLE' */
+/* ID : 'FILTER_TOGLE' */
+static const char* FILTER_TOGLE_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 6 1",
+"  c Black",
+"O c #808080",
+". c None",
+"+ c #FFFF00",
+"X c #008080",
+"o c #C0C0C0",
+/* pixels */
+"           .....",
+". XoooooX ......",
+".. ooooX .......",
+"... ooX ...Oo++ ",
+".... o ...Oo++  ",
+".... o ..Oo++  .",
+".... X ..Oo+  ..",
+"....   .Oo+  ...",
+".......Oo+++++  ",
+".......    o+  .",
+".........Oo+  ..",
+"........Oo+  ...",
+"........O+  ....",
+".......O+  .....",
+"........  ......"
+};
+
+/* ***************************************************************** */
+/* file title : 'icn_grouping' */
+/* ID : 'GROUP' */
+static const char* GROUP_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 7 1",
+"O c Black",
+". c #808080",
+"  c None",
+"X c #FFFF00",
+"+ c #00FFFF",
+"o c #C0C0C0",
+"@ c #00FF00",
+/* pixels */
+"     ......     ",
+"    ..XXoooOO   ",
+"   .+XXXoooooO  ",
+"  .@++XXooooooO ",
+"  .@@+XXooooooO ",
+" .oo@@+Xooooo.oX",
+" .ooo@+.O.oo.oXX",
+" .oooo@OoOo.oXXO",
+" .ooooo.O.+.oXOO",
+" .ooooooo@.oXOO ",
+"  .oooooo.XXXXXX",
+"  .ooooooOOOOoXO",
+"   .ooooo@@.oXOO",
+"    ..ooo@.oXOO ",
+"     ...OO.XOO  "
+};
+
+/* ***************************************************************** */
+/* file title : 'Movies' */
+/* ID : 'MOVIES' */
+static const char* MOVIES_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 7 1",
+". c Black",
+"X c #FFFFFF",
+"+ c #808080",
+"O c #008000",
+"  c None",
+"@ c #FFFF00",
+"o c #00FF00",
+/* pixels */
+"  .  .XXXXXXoOoo",
+" .... ..XXX+oOoO",
+"  .....XX+..oOoO",
+"    ...X.   ..OO",
+"      .....    .",
+"        ...@.   ",
+"...........@.   ",
+"............    ",
+"............    ",
+"............    ",
+"............   .",
+"..............oO",
+".......XXXXXoOoO",
+"...... .XX++oOoO",
+"    .XXXX+ .O.OO"
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_MOVIES_COPY' */
+/* ID : 'MOVIES_COPY' */
+static const char* MOVIES_COPY_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 5 1",
+"X c Black",
+"O c #FFFFFF",
+"  c None",
+". c #000080",
+"o c #C0C0C0",
+/* pixels */
+"                ",
+" .............  ",
+" .............  ",
+" XoOoOoOoOoOoX  ",
+" XOXXXOXXXXXOX  ",
+" XoOoOoXOOOXoX  ",
+" XOoOoOXXXXXOX  ",
+" XoOoOoOo....X  ",
+" XOXXXOXX.OOO.  ",
+" XoOoOoXO.OXO.. ",
+" XOoOoOXX.OOOOO.",
+" XoOoOoOo.OXOXO.",
+" XXXXXXXX.OOXOO.",
+"         .OOOOO.",
+"         ......."
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_MOVIES_PASTE' */
+/* ID : 'MOVIES_PASTE' */
+static const char* MOVIES_PASTE_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 8 1",
+"X c Black",
+"O c #FFFFFF",
+"# c #808080",
+"  c None",
+". c #000080",
+"+ c #FFFF00",
+"o c #C0C0C0",
+"@ c #808000",
+/* pixels */
+"                ",
+" .............  ",
+" .............  ",
+" XoOoOoOoOoOoX  ",
+" XOXXXOXXXXXOX  ",
+" XoOoOoXOXXXXX  ",
+" XOoOoOXXX++XXX ",
+" XoOoOX@X+XX+X#X",
+" XOXXXX#XooooX@X",
+" XoOoOX@#@#@#@#X",
+" XOoOoX#@#@#@#@X",
+" XoOoOX@#@#@#@#X",
+" XXXXXX#@#@#@#@X",
+"      X@#@#@#@#X",
+"       XXXXXXXX "
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_RS_SEARCH' */
+/* ID : 'SEARCH' */
+static const char* SEARCH_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 3 1",
+". c Black",
+"  c None",
+"X c #C0C0C0",
+/* pixels */
+"                ",
+"    ...   ...   ",
+"    .X.   .X.   ",
+"    ...   ...   ",
+"   ..... .....  ",
+"   .X... .X...  ",
+"  ............. ",
+" ..X...X..X.....",
+" ..X...X..X.....",
+" ..X......X.....",
+" ....... .......",
+" .X...     .X...",
+" .X...     .X...",
+" .....     .....",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_RS_SRCNEXT' */
+/* ID : 'SEARCH_NEXT' */
+static const char* SEARCH_NEXT_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 5 1",
+". c Black",
+"X c #808080",
+"  c None",
+"O c #000080",
+"o c #C0C0C0",
+/* pixels */
+"                ",
+"   .. ..        ",
+"   .. ..        ",
+"  .X...X.       ",
+" .........      ",
+" .o.. .o..      ",
+" .X.. .X..      ",
+" ...   ...      ",
+" ...   ...      ",
+"                ",
+"             O  ",
+"             OO ",
+"    O O O OOOOOO",
+"             OO ",
+"             O  "
+};
+
+/* ***************************************************************** */
+/* file title : 'IDM_RS_SRCPREV' */
+/* ID : 'SEARCH_PREV' */
+static const char* SEARCH_PREV_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 5 1",
+". c Black",
+"X c #808080",
+"  c None",
+"O c #000080",
+"o c #C0C0C0",
+/* pixels */
+"                ",
+"        .. ..   ",
+"        .. ..   ",
+"       .X...X.  ",
+"      ......... ",
+"      .o.. .o.. ",
+"      .X.. .X.. ",
+"      ...   ... ",
+"      ...   ... ",
+"                ",
+"  O             ",
+" OO             ",
+"OOOOOO O O O    ",
+" OO             ",
+"  O             "
+};
+
+/* ***************************************************************** */
+/* file title : 'Storage' */
+/* ID : 'STORAGE' */
+static const char* STORAGE_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 7 1",
+"O c Black",
+". c #808080",
+"  c None",
+"X c #FFFF00",
+"+ c #00FFFF",
+"o c #C0C0C0",
+"@ c #00FF00",
+/* pixels */
+"     ......     ",
+"    ..XXoooOO   ",
+"   .+XXXoooooO  ",
+"  .@++XXooooooO ",
+"  .@@+XXooooooO ",
+" .oo@@+XoooooooO",
+" .ooo@+.O.oooooO",
+" .oooo@OoOoooooO",
+" .ooooo.O.+ooooO",
+" .ooooooo@X+oooO",
+"  .oooooo@X++oO ",
+"  .oooooo@XX++O ",
+"   .ooooo@@XXO  ",
+"    ..ooo@@OO   ",
+"     ...OOO     "
+};
+

@@ -1,0 +1,141 @@
+/* ******************************************************************************** */
+/* custom combined XPM-file, written by "RcImage" at (Monday) 15-Aug-2022 13:38:22  */
+/* include this file into your project's CPP file                                   */
+/* ******************************************************************************** */
+
+/* ***************************************************************** */
+/* file title : 'No' */
+/* ID : 'NOSORT' */
+static const char* NOSORT_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"32 32 3 1",
+"X c #808080",
+"  c None",
+". c #800000",
+/* pixels */
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                    ....        ",
+"                    ....        ",
+"                XX....XXXX      ",
+"                XX....XXXX      ",
+"    XX....    XX....XXXX        ",
+"    XX....    XX....XXXX        ",
+"      XXXX........XXXX          ",
+"      XXXX........XXXX          ",
+"          XX......XX            ",
+"          XX......XX            ",
+"          ..........            ",
+"          ..........            ",
+"        XX....XXXX....          ",
+"        XX....XXXX....          ",
+"        ....XXXX  ....XX        ",
+"        ....XXXX  ....XX        ",
+"      XX....XX      XX..        ",
+"      XX....XX      XX..        ",
+"      ....XXXX        ..XX      ",
+"      ....XXXX        ..XX      ",
+"      ..XXXX          XXXX      ",
+"      ..XXXX          XXXX      ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                "
+};
+
+/* ***************************************************************** */
+/* file title : 'Ascendent' */
+/* ID : 'SORTASC' */
+static const char* SORTASC_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"32 32 5 1",
+"X c Black",
+"o c #808080",
+"  c None",
+". c #000080",
+"O c #800000",
+/* pixels */
+"        ..              XX      ",
+"        ..              XX      ",
+"      oo..oo            XX      ",
+"      oo..oo            XX      ",
+"      ......            XX      ",
+"      ......            XX      ",
+"    oo..  ..oo          XX      ",
+"    oo..  ..oo          XX      ",
+"    ..........          XX      ",
+"    ..........          XX      ",
+"  oo..      ..oo        XX      ",
+"  oo..      ..oo        XX      ",
+"  ......  ......        XX      ",
+"  ......  ......        XX      ",
+"                        XX      ",
+"                        XX      ",
+"  OOOOOOOOOOOO          XX      ",
+"  OOOOOOOOOOOO          XX      ",
+"  OO      OOOO          XX      ",
+"  OO      OOOO          XX      ",
+"        OOOO        XXXXXXXXXX  ",
+"        OOOO        XXXXXXXXXX  ",
+"      OOOO          ooXXXXXXoo  ",
+"      OOOO          ooXXXXXXoo  ",
+"    OOOO              XXXXXX    ",
+"    OOOO              XXXXXX    ",
+"  OOOO      OO        ooXXoo    ",
+"  OOOO      OO        ooXXoo    ",
+"  OOOOOOOOOOOO          XX      ",
+"  OOOOOOOOOOOO          XX      ",
+"                                ",
+"                                "
+};
+
+/* ***************************************************************** */
+/* file title : 'Descendant' */
+/* ID : 'SORTDESC' */
+static const char* SORTDESC_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"32 32 5 1",
+"X c Black",
+"O c #808080",
+"  c None",
+"o c #000080",
+". c #800000",
+/* pixels */
+"  ............          XX      ",
+"  ............          XX      ",
+"  ..      ....          XX      ",
+"  ..      ....          XX      ",
+"        ....            XX      ",
+"        ....            XX      ",
+"      ....              XX      ",
+"      ....              XX      ",
+"    ....                XX      ",
+"    ....                XX      ",
+"  ....      ..          XX      ",
+"  ....      ..          XX      ",
+"  ............          XX      ",
+"  ............          XX      ",
+"                        XX      ",
+"                        XX      ",
+"        oo              XX      ",
+"        oo              XX      ",
+"      OOooOO            XX      ",
+"      OOooOO            XX      ",
+"      oooooo        XXXXXXXXXX  ",
+"      oooooo        XXXXXXXXXX  ",
+"    OOoo  ooOO      OOXXXXXXOO  ",
+"    OOoo  ooOO      OOXXXXXXOO  ",
+"    oooooooooo        XXXXXX    ",
+"    oooooooooo        XXXXXX    ",
+"  OOoo      ooOO      OOXXOO    ",
+"  OOoo      ooOO      OOXXOO    ",
+"  oooooo  oooooo        XX      ",
+"  oooooo  oooooo        XX      ",
+"                                ",
+"                                "
+};
+

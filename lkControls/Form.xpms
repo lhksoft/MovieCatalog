@@ -1,0 +1,110 @@
+/* lkControls - custom controls using wxWidgets
+ * Copyright (C) 2022 Laurens Koehoorn (lhksoft)
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+/* XPM */
+static const char* FORM_SMALL_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 16 1 ",
+"  c black",
+". c #800000",
+"X c #008000",
+"o c #808000",
+"O c navy",
+"+ c #800080",
+"@ c none", // #008080
+"# c #C0C0C0",
+"$ c #808080",
+"% c red",
+"& c green",
+"* c yellow",
+"= c blue",
+"- c magenta",
+"; c cyan",
+": c white",
+/* pixels */
+"@@@@@@@@@@@@@@@@",
+"@@@@@@@@@@@@@@@@",
+"@OOOOOOOOOOOOO@@",
+"@OOOOOOOOOOOOO@@",
+"@ #:#:#:#:#:# @@",
+"@ :   :     : @@",
+"@ #:#:# ::: # @@",
+"@ :#:#:     : @@",
+"@ #:#:#:#:#:# @@",
+"@ :   :     : @@",
+"@ #:#:# ::: # @@",
+"@ :#:#:     : @@",
+"@ #:#:#:#:#:# @@",
+"@             @@",
+"@@@@@@@@@@@@@@@@",
+"@@@@@@@@@@@@@@@@"
+};
+
+/* XPM */
+static const char* FORM_BIG_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"32 32 16 1 ",
+"  c black",
+". c #800000",
+"X c #008000",
+"o c #808000",
+"O c navy",
+"+ c #800080",
+"@ c none", // #008080
+"# c #C0C0C0",
+"$ c #808080",
+"% c red",
+"& c green",
+"* c yellow",
+"= c blue",
+"- c magenta",
+"; c cyan",
+": c white",
+/* pixels */
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+"@@OOOOOOOOOOOOOOOOOOOOOOOOOOOO@@",
+"@@OOOOOOOOOOOOOOOOOOOOOOOOOOOO@@",
+"@@OOOOOOOOOOOOOOOOOOOOOOOOOOOO@@",
+"@@ #:#:#:#:#:#:#:#:#:#:#:#:#: @@",
+"@@ :#:#:#:#:#:#:#:#:#:#:#:#:# @@",
+"@@ #:         :#           #: @@",
+"@@ :#:#:#:#:#:#: ::::::::: :# @@",
+"@@ #:         :# ::::::::: #: @@",
+"@@ :#:#:#:#:#:#: ::::::::: :# @@",
+"@@ #:#:#:#:#:#:# ::::::::: #: @@",
+"@@ :#:#:#:#:#:#:           :# @@",
+"@@ #:#:#:#:#:#:#:#:#:#:#:#:#: @@",
+"@@ :#         #:           :# @@",
+"@@ #:#:#:#:#:#:# ::::::::: #: @@",
+"@@ :#         #: ::::::::: :# @@",
+"@@ #:#:#:#:#:#:# ::::::::: #: @@",
+"@@ :#:#:#:#:#:#: ::::::::: :# @@",
+"@@ #:#:#:#:#:#:#           #: @@",
+"@@ :#:#:#:#:#:#:#:#:#:#:#:#:# @@",
+"@@ #:         :#           #: @@",
+"@@ :#:#:#:#:#:#: ::::::::: :# @@",
+"@@ #:         :# ::::::::: #: @@",
+"@@ :#:#:#:#:#:#: ::::::::: :# @@",
+"@@ #:#:#:#:#:#:# ::::::::: #: @@",
+"@@ :#:#:#:#:#:#:           :# @@",
+"@@ #:#:#:#:#:#:#:#:#:#:#:#:#: @@",
+"@@ :#:#:#:#:#:#:#:#:#:#:#:#:# @@",
+"@@                            @@",
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+};

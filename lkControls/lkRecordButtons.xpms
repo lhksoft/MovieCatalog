@@ -1,0 +1,357 @@
+/* lkControls - custom controls using wxWidgets
+ * Copyright (C) 2022 Laurens Koehoorn (lhksoft)
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+/* ******************************************************************************** */
+/* custom combined XPM-file, written by "RcImage" at (Friday) 15-Apr-2022 23:20:43  */
+/* include this file into your project's CPP file                                   */
+/* ******************************************************************************** */
+
+/* ***************************************************************** */
+/* file title : 'FirstD' */
+/* ID : 'RECNAV_FIRSTD' */
+static const char* RECNAV_FIRSTD_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"                ",
+"   ..  . .   .  ",
+"  . ..    ..  . ",
+"    ..   ...    ",
+"  . ..  ....  . ",
+"    ..   ...    ",
+"  . ..    ..  . ",
+"   ..  . .   .  ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'FirstU' */
+/* ID : 'RECNAV_FIRSTU' */
+static const char* RECNAV_FIRSTU_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"   ..     .     ",
+"   ..    ..     ",
+"   ..   ...     ",
+"   ..  ....     ",
+"   ..   ...     ",
+"   ..    ..     ",
+"   ..     .     ",
+"                ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'FirstX' */
+/* ID : 'RECNAV_FIRSTX' */
+static const char* RECNAV_FIRSTX_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 3 1",
+"X c #FFFFFF",
+". c #808080",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"   ..X    .     ",
+"   ..X   ..X    ",
+"   ..X  ...X    ",
+"   ..X ....X    ",
+"   ..X  ...X    ",
+"   ..X   ..X    ",
+"   ..X    .X    ",
+"    XX     X    ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'LastD' */
+/* ID : 'RECNAV_LASTD' */
+static const char* RECNAV_LASTD_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"                ",
+"   ... . ..  .  ",
+"  . ..    ..  . ",
+"    ...   ..    ",
+"  . ....  ..  . ",
+"    ...   ..    ",
+"  . ..    ..  . ",
+"   ... . ..  .  ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'LastU' */
+/* ID : 'RECNAV_LASTU' */
+static const char* RECNAV_LASTU_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"   .     ..     ",
+"   ..    ..     ",
+"   ...   ..     ",
+"   ....  ..     ",
+"   ...   ..     ",
+"   ..    ..     ",
+"   .     ..     ",
+"                ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'LastX' */
+/* ID : 'RECNAV_LASTX' */
+static const char* RECNAV_LASTX_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 3 1",
+"X c #FFFFFF",
+". c #808080",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"   .     ..X    ",
+"   ..    ..X    ",
+"   ...   ..X    ",
+"   ....  ..X    ",
+"   ...XX ..X    ",
+"   ..XX  ..X    ",
+"   .XX   ..X    ",
+"    X     XX    ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'NewD' */
+/* ID : 'RECNAV_NEWD' */
+static const char* RECNAV_NEWD_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"                ",
+"  .. . . .   .  ",
+"   .     . . .. ",
+"  ...     ...   ",
+"   ...  ......  ",
+"  ...     ...   ",
+"   .     . . .. ",
+"  .. . . .   .  ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'NewU' */
+/* ID : 'RECNAV_NEWU' */
+static const char* RECNAV_NEWU_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+" .        .     ",
+" ..     . . .   ",
+" ...     ...    ",
+" ....  .......  ",
+" ...     ...    ",
+" ..     . . .   ",
+" .        .     ",
+"                ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'NewX' */
+/* ID : 'RECNAV_NEWX' */
+static const char* RECNAV_NEWX_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 3 1",
+"X c #FFFFFF",
+". c #808080",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+" .        .     ",
+" ..     . .X.   ",
+" ...     ... X  ",
+" ....  .......  ",
+" ...XX  X...XXX ",
+" ..XX   . .X.   ",
+" .XX     X.X X  ",
+"  X        X    ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'NextD' */
+/* ID : 'RECNAV_NEXTD' */
+static const char* RECNAV_NEXTD_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"                ",
+"   . ... . . .  ",
+"  .   ..      . ",
+"      ...       ",
+"  .   ....    . ",
+"      ...       ",
+"  .   ..      . ",
+"   . ... . . .  ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'NextU' */
+/* ID : 'RECNAV_NEXTU' */
+static const char* RECNAV_NEXTU_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"     .          ",
+"     ..         ",
+"     ...        ",
+"     ....       ",
+"     ...        ",
+"     ..         ",
+"     .          ",
+"                ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'NextX' */
+/* ID : 'RECNAV_NEXTX' */
+static const char* RECNAV_NEXTX_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 3 1",
+"X c #FFFFFF",
+". c #808080",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"     .          ",
+"     ..         ",
+"     ...        ",
+"     ....       ",
+"     ...XX      ",
+"     ..XX       ",
+"     .XX        ",
+"      X         ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'PrevD' */
+/* ID : 'RECNAV_PREVD' */
+static const char* RECNAV_PREVD_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"                ",
+"   . . .   . .  ",
+"  .     ..    . ",
+"       ...      ",
+"  .   ....    . ",
+"       ...      ",
+"  .     ..    . ",
+"   . . .   . .  ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'PrevU' */
+/* ID : 'RECNAV_PREVU' */
+static const char* RECNAV_PREVU_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 2 1",
+". c Black",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"        .       ",
+"       ..       ",
+"      ...       ",
+"     ....       ",
+"      ...       ",
+"       ..       ",
+"        .       ",
+"                ",
+"                "
+};
+
+/* ***************************************************************** */
+/* file title : 'PrevX' */
+/* ID : 'RECNAV_PREVX' */
+static const char* RECNAV_PREVX_XPM[] = {
+/* columns rows colors chars-per-pixel */
+"16 11 3 1",
+"X c #FFFFFF",
+". c #808080",
+"  c None",
+/* pixels */
+"                ",
+"                ",
+"        .       ",
+"       ..X      ",
+"      ...X      ",
+"     ....X      ",
+"      ...X      ",
+"       ..X      ",
+"        .X      ",
+"         X      ",
+"                "
+};
+
