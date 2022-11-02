@@ -14,9 +14,24 @@ DStorage::DStorage(lkSQL3Database* pDB) : lkSQL3RecordDialog(pDB), TStorage(pDB)
 
 bool DStorage::Create(wxWindow* parent)
 {
-	if ( !lkSQL3RecordDialog::Create(parent, CStorage::GetBackground(), wxT("Storages Dialog"), wxDefaultPosition, wxSize(531, 258), wxDEFAULT_DIALOG_STYLE) )
+	wxSize size = 
+#ifdef __WXMSW__
+		wxSize(531, 258)
+#else
+		wxSize(515, 300)
+#endif
+	;
+	if ( !lkSQL3RecordDialog::Create(parent, CStorage::GetBackground(), wxT("Storages Dialog"), wxDefaultPosition, size, wxDEFAULT_DIALOG_STYLE) )
 		return false;
-	SetMinClientSize(wxSize(515, 170));
+
+	size = 
+#ifdef __WXMSW__
+		wxSize(515, 170)
+#else
+		wxSize(515, 200)
+#endif
+	;
+	SetMinClientSize(size);
 	SetStatusText(wxEmptyString, 1);
 
 	// this forces to open the recordset and initialize its internal fields
