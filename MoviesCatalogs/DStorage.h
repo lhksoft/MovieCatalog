@@ -1,20 +1,3 @@
-/* ********************************************************************************
- * MoviesCatalog - a Programm to catalogue a private collection of Movies using SQLite3
- * Copyright (C) 2022 by Laurens Koehoorn (lhksoft)
- * 
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- * 
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
- * ********************************************************************************/
 #ifndef __D_STORAGE_H__
 #define __D_STORAGE_H__
 #pragma once
@@ -23,7 +6,11 @@
 #include "CStorage.h"
 #include "TStorage.h"
 
-class DStorage : public lkSQL3RecordDialog, public TStorage, private CStorage
+//// (02-11-22) Correction, 
+//// was .., private CStorage
+//// must be ..,public CStorage
+//// reason : some internals of CStorage otherwise not available inside derived class DStorage
+class DStorage : public lkSQL3RecordDialog, public TStorage, public CStorage
 {
 public:
 	DStorage(lkSQL3Database*);
