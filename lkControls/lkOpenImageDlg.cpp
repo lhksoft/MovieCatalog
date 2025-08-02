@@ -261,7 +261,7 @@ bool lkOpenImageDlg::Create(wxWindow* parent, const wxString& defaultFile, const
 	if ( HasFdFlag(wxFD_MULTIPLE) )
 		style2 |= wxFC_MULTIPLE;
 
-	m_filectrl = new wxGenericFileCtrl(this, (wxWindowID)lkOpenImageDlg::ids::ID_FILE_CTRL, m_dir, defaultFile, wildcard, style2, wxDefaultPosition, wxSize(540, 300));
+	m_filectrl = new lkFileCtrl(this, (wxWindowID)lkOpenImageDlg::ids::ID_FILE_CTRL, m_dir, defaultFile, wildcard, style2, wxDefaultPosition, wxSize(540, 300));
 	m_filectrl->ShowHidden(ms_lastShowHidden);
 
 	if ( ms_lastViewStyle == wxLC_LIST )
@@ -494,16 +494,30 @@ void lkOpenImageDlg::OnFileActivated(wxFileCtrlEvent& WXUNUSED(event))
 
 void lkOpenImageDlg::OnSelectionChanged(wxFileCtrlEvent& event)
 {
-	wxString Dir = event.GetDirectory();
-	wxString File = event.GetFile();
-
-	wxFileName fN(Dir, File);
-	if ( fN.IsOk() && fN.FileExists() )
+/* *******************
+ * Changed from wxGTK 3.2.4 :
+ *
+ * wxString File = event.GetFile();
+ *  \> gives 'segment fault'
+ * so changed into :
+*/
+	wxArrayString ar = event.GetFiles();
+	if (!ar.IsEmpty())
 	{
-		wxImage Img;
-		Img.LoadFile(fN.GetFullPath());
-		m_imgPreview->SetImage(Img);
+		wxString Dir = event.GetDirectory();
+		wxString File = ar[0];
+		wxFileName fN(Dir, File);
+		if ( fN.IsOk() && fN.FileExists() )
+		{
+			wxImage Img;
+			Img.LoadFile(fN.GetFullPath());
+			m_imgPreview->SetImage(Img);
+		}
+		else
+			m_imgPreview->SetEmpty();
 	}
+	else
+		m_imgPreview->SetEmpty();
 }
 
 void lkOpenImageDlg::OnUpdateButtonsUI(wxUpdateUIEvent& event)

@@ -289,7 +289,9 @@ bool MoviesView::OnCreate(wxDocument* doc, long flags)
 			wxSize(867, 505)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Movies"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Movies"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -333,6 +335,12 @@ bool MoviesView::UpdateData(bool bSaveAndValidate)
 			(dynamic_cast<MoviesCanvas*>(m_pCanvas))->MoviesCopyDisable();
 
 	return lkSQL3RecordView::UpdateData(bSaveAndValidate);
+}
+
+//virtual
+wxString MoviesView::GetConfigPath() const
+{
+	return wxT("VMovies");
 }
 
 //virtual

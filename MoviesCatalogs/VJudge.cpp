@@ -222,7 +222,9 @@ bool JudgeView::OnCreate(wxDocument* doc, long flags)
 			wxSize(365, 288)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Judgement"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Judgement"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -250,6 +252,12 @@ bool JudgeView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void JudgeView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString JudgeView::GetConfigPath() const
+{
+	return wxT("VJudge");
 }
 
 

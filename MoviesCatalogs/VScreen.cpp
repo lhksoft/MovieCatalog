@@ -273,7 +273,9 @@ bool ScreenView::OnCreate(wxDocument* doc, long flags)
 			wxSize(353, 256)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Screen"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Screen"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -301,6 +303,12 @@ bool ScreenView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void ScreenView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString ScreenView::GetConfigPath() const
+{
+	return wxT("VScreen");
 }
 
 

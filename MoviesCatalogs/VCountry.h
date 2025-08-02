@@ -60,6 +60,11 @@ public:
 	virtual bool					OnCreate(wxDocument* doc, long flags) wxOVERRIDE;
 	virtual void					OnUpdate(wxView* sender, wxObject* hint = NULL) wxOVERRIDE;
 
+// Overrides
+protected:
+	// Required for setting config-options
+	virtual wxString				GetConfigPath(void) const wxOVERRIDE;
+
 protected:
 
 	wxDECLARE_EVENT_TABLE();

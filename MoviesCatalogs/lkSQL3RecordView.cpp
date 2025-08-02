@@ -25,6 +25,8 @@
 #include "../lkSQLite3/lkSQL3Exception.h"
 #include <wx/msgdlg.h>
 
+#include "../lkControls/lkConfigTools.h"
+
 wxDEFINE_EVENT(lkEVT_SQL3MOVE, lkSQL3MoveEvent);
 
 // /////////////////////////////////////////////////////////////////////////////////////////////
@@ -705,6 +707,42 @@ void lkSQL3RecordView::UpdateRecordStatusbar()
 	}
 }
 
+void lkSQL3RecordView::SetConfigPosition() // called in 'OnCloseWindow' -- will store frame's current position in cofig-file
+{
+	wxWindow* w = GetFrame();
+	wxPoint pos = wxDefaultPosition;
+	if (w)
+	{
+		wxFrame* f = dynamic_cast<wxFrame*>(w);
+		pos = f->GetPosition();
+	}
+	if (pos != wxDefaultPosition)
+	{
+		SetConfigInt(GetConfigPath(), wxT("PosX"), (wxInt64)pos.x);
+		SetConfigInt(GetConfigPath(), wxT("PosY"), (wxInt64)pos.y);
+	}
+}
+
+wxPoint	lkSQL3RecordView::GetConfigPosition() const
+{
+	wxPoint pos;
+	int x, y;
+	x = (int)GetConfigInt(GetConfigPath(), wxT("PosX"));
+	y = (int)GetConfigInt(GetConfigPath(), wxT("PosY"));
+
+	if ( x <= 0 ) x = -1;
+	if ( y <= 0 ) y = -1;
+
+	if ( (x < 0) && (y < 0) )
+		return wxDefaultPosition;
+	else
+	{
+		pos.x = x;
+		pos.y = y;
+	}
+	return pos;
+}
+
 void lkSQL3RecordView::ProcessRecordset(lkSQL3RecordSet*)
 { // called from 'OnUpdate'
   // by default, doesn't do anything
@@ -718,6 +756,13 @@ void lkSQL3RecordView::OnUpdate(wxView* pSender, wxObject* pHint)
 {
 	if ( (pHint == NULL) || (pHint->IsKindOf(wxCLASSINFO(lkSQL3RecordSet))) )
 		ProcessRecordset((lkSQL3RecordSet*)pHint);
+}
+
+//virtual
+bool lkSQL3RecordView::OnClose(bool deleteWindow)
+{
+	SetConfigPosition();
+	return wxView::OnClose(deleteWindow);
 }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////

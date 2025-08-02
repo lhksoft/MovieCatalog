@@ -356,7 +356,9 @@ bool BaseView::OnCreate(wxDocument* doc, long flags)
 			wxSize(745, 545)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Base"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Base"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -421,6 +423,11 @@ void BaseView::ProcessRecordset(lkSQL3RecordSet* pSet)
 	}
 }
 
+//virtual
+wxString BaseView::GetConfigPath() const
+{
+	return wxT("VBase");
+}
 
 // /////////////////////////////////////////////////////////////////////////////////////////////
 // class MoviesTemplate

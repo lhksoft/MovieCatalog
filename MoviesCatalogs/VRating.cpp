@@ -235,7 +235,9 @@ bool RatingView::OnCreate(wxDocument* doc, long flags)
 			wxSize(355, 283)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Ratings"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Ratings"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -263,6 +265,12 @@ bool RatingView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void RatingView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString RatingView::GetConfigPath() const
+{
+	return wxT("VRating");
 }
 
 

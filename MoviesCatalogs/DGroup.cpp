@@ -209,7 +209,14 @@ bool DGroup::Create(wxWindow* parent)
 	wxASSERT(GetCurRecord() > 0); // must be set prior of calling Create
 	if ( !lkSQL3RecordDialog::Create(parent, GetImage_FBG_GROUP(), wxT("Grouping Dialog"), wxDefaultPosition, wxSize(566, 340), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER) )
 		return false;
-	SetMinClientSize(wxSize(550, 252));
+
+	int height;
+#ifdef __WXMSW__
+	height = 252;
+#else
+	height = 260;
+#endif
+	SetMinClientSize(wxSize(550, height));
 
 	// this forces to open the recordset and initialize its internal fields
 	{
@@ -222,7 +229,7 @@ bool DGroup::Create(wxWindow* parent)
 	wxBoxSizer* szMain = new wxBoxSizer(wxVERTICAL);
 
 	/* *******************************************************************************
-	 * Movies-Preview in a Panel acting as a Control
+	 * Storage-Preview in a Panel acting as a Control
 	 * ******************************************************************************* */
 	{
 		szMain->Add(m_pStorageCtrl = new GroupStorageCanvas(this, GetDB(), lkStaticPanelValidator(m_pFldStorage)), 1, wxALL | wxEXPAND, 10);

@@ -266,7 +266,9 @@ bool OrigineView::OnCreate(wxDocument* doc, long flags)
 			wxSize(365, 296)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Origines"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Origines"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -294,6 +296,12 @@ bool OrigineView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void OrigineView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString OrigineView::GetConfigPath() const
+{
+	return wxT("VOrigine");
 }
 
 

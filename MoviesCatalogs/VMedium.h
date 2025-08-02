@@ -54,6 +54,11 @@ public:
 	virtual bool					OnCreate(wxDocument* doc, long flags) wxOVERRIDE;
 	virtual void					OnUpdate(wxView* sender, wxObject* hint = NULL) wxOVERRIDE;
 
+// Overrides
+protected:
+	// Required for setting config-options
+	virtual wxString				GetConfigPath(void) const wxOVERRIDE;
+
 private:
 	wxDECLARE_DYNAMIC_CLASS_NO_COPY(MediumView);
 };

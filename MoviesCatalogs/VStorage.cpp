@@ -394,7 +394,9 @@ bool StorageView::OnCreate(wxDocument* doc, long flags)
 			wxSize(541, 245)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Storage"), wxDefaultPosition, size, (wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX)) | wxFRAME_FLOAT_ON_PARENT | wxFRAME_NO_TASKBAR);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Storage"), pos, size, (wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX)) | wxFRAME_FLOAT_ON_PARENT | wxFRAME_NO_TASKBAR);
 
 		size =
 #ifdef __WXMSW__
@@ -432,6 +434,12 @@ void StorageView::InitialUpdate()
 		strDoc->MoveLast();
 
 	lkSQL3RecordView::InitialUpdate();
+}
+
+//virtual
+wxString StorageView::GetConfigPath() const
+{
+	return wxT("VStorage");
 }
 
 //virtual

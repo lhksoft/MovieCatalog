@@ -96,6 +96,11 @@ public:
 protected:
 	virtual void					ProcessRecordset(lkSQL3RecordSet*) wxOVERRIDE;
 
+// Overrides
+protected:
+	// Required for setting config-options
+	virtual wxString				GetConfigPath(void) const wxOVERRIDE;
+
 private:
 	wxDECLARE_DYNAMIC_CLASS_NO_COPY(BaseView);
 };

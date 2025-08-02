@@ -210,7 +210,9 @@ bool LocationView::OnCreate(wxDocument* doc, long flags)
 			wxSize(365, 287)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Locations"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Locations"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -238,6 +240,12 @@ bool LocationView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void LocationView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString LocationView::GetConfigPath() const
+{
+	return wxT("VLocation");
 }
 
 

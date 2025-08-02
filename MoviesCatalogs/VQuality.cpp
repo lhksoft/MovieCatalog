@@ -272,7 +272,9 @@ bool QualityView::OnCreate(wxDocument* doc, long flags)
 			wxSize(397, 278)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Qualities"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Qualities"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -300,6 +302,12 @@ bool QualityView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void QualityView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString QualityView::GetConfigPath() const
+{
+	return wxT("VQuality");
 }
 
 

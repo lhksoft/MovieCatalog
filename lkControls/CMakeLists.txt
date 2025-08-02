@@ -24,6 +24,8 @@ PRIVATE
     lkFileConfig.h
     lkFileConfig_private.cpp
     lkFileConfig_private.h
+    lkFileCtrl.cpp
+    lkFileCtrl.h
     lkHyperlinkCtrl.cpp
     lkHyperlinkCtrl.h
     lkHyperlinkCtrl_private.cpp

@@ -85,7 +85,10 @@ public:
 	virtual void					InitialUpdate(void) wxOVERRIDE;
 	virtual bool					UpdateData(bool bSaveAndValidate = false) wxOVERRIDE;
 
+// Overrides
 protected:
+	// Required for setting config-options
+	virtual wxString				GetConfigPath(void) const wxOVERRIDE;
 	virtual void					ProcessRecordset(lkSQL3RecordSet*) wxOVERRIDE;
 
 private:

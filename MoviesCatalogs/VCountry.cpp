@@ -476,7 +476,9 @@ bool CountryView::OnCreate(wxDocument* doc, long flags)
 			wxSize(404, 483)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Countries"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Countries"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -505,6 +507,13 @@ bool CountryView::OnCreate(wxDocument* doc, long flags)
 void CountryView::OnUpdate(wxView* sender, wxObject* hint)
 {
 }
+
+//virtual
+wxString CountryView::GetConfigPath() const
+{
+	return wxT("VCountry");
+}
+
 
 /////////////////////////////////////////////////////////////////////////
 // Event Processing

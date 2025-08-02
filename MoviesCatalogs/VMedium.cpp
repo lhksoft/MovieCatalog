@@ -248,7 +248,9 @@ bool MediumView::OnCreate(wxDocument* doc, long flags)
 			wxSize(365, 316)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Media"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Media"), pos, size);
 		size =
 #ifdef __WXMSW__
 			wxSize(349, 217)
@@ -275,6 +277,12 @@ bool MediumView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void MediumView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString MediumView::GetConfigPath() const
+{
+	return wxT("VMedium");
 }
 
 

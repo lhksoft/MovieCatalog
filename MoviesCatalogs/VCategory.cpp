@@ -386,7 +386,9 @@ bool CategoryView::OnCreate(wxDocument* doc, long flags)
 			wxSize(350, 315)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Categories"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Categories"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -420,6 +422,12 @@ bool CategoryView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void CategoryView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString CategoryView::GetConfigPath() const
+{
+	return wxT("VCategory");
 }
 
 

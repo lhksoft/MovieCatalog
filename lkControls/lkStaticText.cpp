@@ -266,8 +266,7 @@ void lkStaticText::AutoResizeIfNecessary()
 //virtual
 void lkStaticText::SetLabel(const wxString& label)
 {
-//	const wxString _label = RemoveMarkup(label); // can return empty string
-	wxControl::SetLabel(label);
+	wxControl::SetLabel(EscapeMnemonics(label));
 
 	m_label = Wrap(m_labelOrig);
 

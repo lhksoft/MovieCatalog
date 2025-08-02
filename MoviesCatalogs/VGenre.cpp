@@ -232,7 +232,9 @@ bool GenreView::OnCreate(wxDocument* doc, long flags)
 			wxSize(365, 379)
 #endif
 			;
-		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Genres"), wxDefaultPosition, size);
+
+		wxPoint pos = GetConfigPosition();
+		(void)frame->Create(doc, this, static_cast<wxDocParentFrame*>(parent), wxT("Genres"), pos, size);
 
 		size =
 #ifdef __WXMSW__
@@ -260,6 +262,12 @@ bool GenreView::OnCreate(wxDocument* doc, long flags)
 //virtual
 void GenreView::OnUpdate(wxView* sender, wxObject* hint)
 {
+}
+
+//virtual
+wxString GenreView::GetConfigPath() const
+{
+	return wxT("VGenre");
 }
 
 /////////////////////////////////////////////////////////////////////////

@@ -21,7 +21,7 @@
 
 #include <wx/filedlg.h>
 #include <wx/bmpbuttn.h>
-#include <wx/generic/filectrlg.h>
+#include "lkFileCtrl.h"
 #include <wx/artprov.h>
 
 #include "lkStaticImage.h"
@@ -53,7 +53,7 @@ private:
 
 protected:
 	wxString				m_filterExtension;
-	wxGenericFileCtrl*		m_filectrl;
+	lkFileCtrl*				m_filectrl;
 	wxBitmapButton*			m_upDirButton;
 	wxBitmapButton*			m_newDirButton;
 

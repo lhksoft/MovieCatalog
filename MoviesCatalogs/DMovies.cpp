@@ -43,7 +43,7 @@ bool DMovies::Create(wxWindow* parent)
 #ifdef __WXMSW__
 	height = 508;
 #else
-	height = 535;
+	height = 575;
 #endif
 	if ( !lkSQL3RecordDialog::Create(parent, CMovies::GetBackground(), wxT("Movies Dialog"), wxDefaultPosition, wxSize(867, height), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER) )
 		return false;
@@ -53,7 +53,7 @@ bool DMovies::Create(wxWindow* parent)
 	height = 420;
 #else
 	width = 867;
-	height = 439;
+	height = 471;
 #endif
 	SetMinClientSize(wxSize(width, height));
 

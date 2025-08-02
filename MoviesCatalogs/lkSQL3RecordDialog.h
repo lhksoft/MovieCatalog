@@ -53,7 +53,6 @@ protected:
 	// As derived child-docs also are derived from a TableSet, this should return 'this' in derived classes
 	virtual lkSQL3RecordSet*		GetBaseSet(void) = 0;
 
-
 // Operations
 public:
 	virtual bool					IsOk(void) const wxOVERRIDE; // true if IsOpen && m_bValidDB==true

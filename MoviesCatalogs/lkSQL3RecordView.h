@@ -182,6 +182,9 @@ protected:
 	bool							m_bClosing; // set to true if user Cancels adding new record in empty recordset so no 2nd Validation will be performed, otherwise allways FALSE
 	bool							m_bInitial; // true in InitialUpdate, otherwise allways false
 
+	// Required for setting config-options
+	virtual wxString				GetConfigPath(void) const = 0;
+
 public:
 	void							SetCurrentRecord(wxUint64);
 	void							SetTotalRecords(wxUint64);
@@ -207,10 +210,15 @@ protected:
 
 	void							UpdateRecordStatusbar(void);
 
+	// called in 'OnClose' -- will store frame's current position in cofig-file
+	void							SetConfigPosition(void);
+	// called in 'OnCreate' from derived Views to get stored position in config-file, on error/not stored, returns wxDefaultPosition
+	wxPoint							GetConfigPosition(void) const;
+
 // Overrides
 public:
 	virtual void					OnUpdate(wxView* sender, wxObject* hint = 0) wxOVERRIDE;
-
+	virtual bool					OnClose(bool deleteWindow) wxOVERRIDE;
 
 // Messages
 /* ********************************************************

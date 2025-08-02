@@ -30,6 +30,8 @@
 #include <wx/frame.h>
 #include <wx/dialog.h>
 
+#include <wx/log.h>
+
 #include "../lkControls/lkColour.h"
 #include "../lkSQLite3/lkDateTime.h"
 #include "../lkControls/lkConfigTools.h"
@@ -117,7 +119,9 @@ bool CStorage::CreateCanvas(wxWindow* parentFrame, wxWindow* parentPanel)
 			wxFont f = m_pStorageCtrl->GetFont();
 			f.SetFamily(wxFONTFAMILY_MODERN);
 			f.MakeLarger();
+#ifdef __WXMSW__
 			f.MakeLarger();
+#endif
 			f.MakeBold();
 			m_pStorageCtrl->SetFont(f);
 			m_pStorageCtrl->SetForegroundColour(MAKE_RGB(0xC0, 0xFF, 0xC0)); // light kaki green
@@ -152,9 +156,27 @@ bool CStorage::CreateCanvas(wxWindow* parentFrame, wxWindow* parentPanel)
 	{
 		// 1st item
 		{
-			wxBoxSizer* szVer = new wxBoxSizer(wxVERTICAL);
-			szVer->Add(new wxButton(m_pParentPanel, m_ID_DateBtn, wxT("Creation Date")), 0, wxBOTTOM, 3);
+#if 0
+			wxLog* curLog = wxLog::GetActiveTarget();
+			wxLog* logger = new wxLogStderr();
+			logger->SetLogLevel( wxLogLevelValues::wxLOG_Debug );
+			wxLog::SetActiveTarget(logger);
 
+			wxSize butSize = wxButton::GetDefaultSize();
+			wxLogInfo( wxT("button default size(%d, %d)\n"), butSize.GetWidth(), butSize.GetHeight());
+			butSize.SetHeight(25);
+			butSize.SetWidth(130);
+			wxLogInfo( wxT("button new size(%d, %d)\n"), butSize.GetWidth(), butSize.GetHeight());
+			wxLog::FlushActive();
+			wxLog::SetActiveTarget(curLog);
+			delete logger; logger=NULL;
+#endif
+			wxBoxSizer* szVer = new wxBoxSizer(wxVERTICAL);
+#ifdef __WXMSW__
+			szVer->Add(new wxButton(m_pParentPanel, m_ID_DateBtn, wxT("Creation Date")), 0, wxBOTTOM, 3);
+#else
+			szVer->Add(new wxButton(m_pParentPanel, m_ID_DateBtn, wxT("Creation Date"), wxDefaultPosition, wxSize(130,25)), 0, wxBOTTOM, 3);
+#endif
 			lkSQL3DateValidator* dVal = new lkSQL3DateValidator(&m_CreaDate, GetFldCreation(), GetBaseRecordset(), true, true);
 			dVal->AddOnlyRequired(true);
 			szVer->Add(m_pCreaDate = new lkTransTextCtrl(m_pParentPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(245, -1), wxTE_READONLY | wxTE_CENTER, *dVal), 0, wxFIXED_MINSIZE);

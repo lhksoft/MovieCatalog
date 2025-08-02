@@ -74,9 +74,13 @@ public:
 	virtual bool					OnCreate(wxDocument* doc, long flags) wxOVERRIDE;
 	virtual void					InitialUpdate(void) wxOVERRIDE;
 
+// Overrides
 protected:
+	// Required for setting config-options
+	virtual wxString				GetConfigPath(void) const wxOVERRIDE;
 	virtual void					ProcessRecordset(lkSQL3RecordSet*) wxOVERRIDE;
 
+protected:
 	void							OnUpdateNextID(wxUpdateUIEvent& event);
 	void							OnNextID(wxCommandEvent& event);
 
