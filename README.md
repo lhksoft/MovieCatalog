@@ -23,33 +23,34 @@ The contents of msvs should be copied into your Projects folder of MS Visual Stu
 Then copy the dirs (with contents) of 'MoviesCatalogs', 'lkControls' and 'lkSQLite3' into that folder.
 
 LINUX :
-requires 'libwxbase3.2-1t64'    (this probably will be at your os by default, if not install it)
-requires 'libwxgtk-gl3.2-1t64'  (this probably will be at your os by default, if not install it)
-requires 'libwxgtk3.2-1t64'     (this probably will be at your os by default, if not install it)
-requires 'libwxgtk3.2-dev'      (sudo apt update & sudo apt install libwxgtk3.2-dev)
-requires 'libsqlite3-0'         (sudo apt update & sudo apt install libsqlite3-0)
-requires 'libsqlite3-dev'       (sudo apt update & sudo apt install libsqlite3-dev)
-requires 'libgtk-3-0t64'        (this probably will be at your os by default, if not install it)
-requires 'libgtk-3-dev'         (sudo apt update & sudo apt install libgtk-3-dev)
+- requires 'libwxbase3.2-1t64'    (this probably will be at your os by default, if not install it)
+- requires 'libwxgtk-gl3.2-1t64'  (this probably will be at your os by default, if not install it)
+- requires 'libwxgtk3.2-1t64'     (this probably will be at your os by default, if not install it)
+- requires 'libwxgtk3.2-dev'      (sudo apt update & sudo apt install libwxgtk3.2-dev)
+- requires 'libsqlite3-0'         (sudo apt update & sudo apt install libsqlite3-0)
+- requires 'libsqlite3-dev'       (sudo apt update & sudo apt install libsqlite3-dev)
+- requires 'libgtk-3-0t64'        (this probably will be at your os by default, if not install it)
+- requires 'libgtk-3-dev'         (sudo apt update & sudo apt install libgtk-3-dev)
 
 How to build (with CMake)
 # Configure a release build
-cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Release
+- cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Release
 # Build release binaries
-cmake --build build/
+- cmake --build build/
 # Install locally in HOME dir
-cmake --install --prefix ~/bin
+- cmake --install . --prefix ~/bin
+- \> but apparently this seems not to work well, so better copy the binary from the .\build directory and copy it to where you desire
 
 
 MSW :
 * For wxWidgets :
 - Download https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.4/wxMSW-3.2.4_vc14x_x64_Dev.7z
 - Download https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.4/wxWidgets-3.2.4-headers.7z
-- \> Unpack into <basefolder-of-MoviesCatalog>\wx324
+- \> Unpack into 'basefolder-of-MoviesCatalog'\wx324
 - Download https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.4/wxMSW-3.2.4_vc14x_x64_ReleaseDLL.7z
-- \> Unpack into <basefolder-of-MoviesCatalog>\wx324\lib\Release
-- Now copy the *.dll and *.pdb from <basefolder-of-MoviesCatalog>\wx324\lib\vc14x_x64_dll into (create if not yet existing) <basefolder-of-MoviesCatalog>\X64\Debug
-- also copy the *.ddl from <basefolder-of-MoviesCatalog>\wx324\lib\Release  into (create if not yet existing) <basefolder-of-MoviesCatalog>\X64\Release
+- \> Unpack into 'basefolder-of-MoviesCatalog'\wx324\lib\Release
+- Now copy the *.dll and *.pdb from 'basefolder-of-MoviesCatalog'\wx324\lib\vc14x_x64_dll into (create if not yet existing) 'basefolder-of-MoviesCatalog'\X64\Debug
+- also copy the *.dll from 'basefolder-of-MoviesCatalog'\wx324\lib\Release  into (create if not yet existing) 'basefolder-of-MoviesCatalog'\X64\Release
 * For sqlite3
 - Download https://sqlite.org/2025/sqlite-amalgamation-3500400.zip
 - \> Unpack only the HEADERS to e.g. C:\sqlite
@@ -60,12 +61,10 @@ MSW :
 - \> run : lib /def:sqlite3.def /machine:X64
 -   \> this will create a .lib file to include in MSVS project
 - In the <basefolder-of-MoviesCatalog> create "sqlite3"
-- \> create following dirs inside that folder (<basefolder-of-MoviesCatalog>\sqlite3) : bin, include, lib
+- \> create following dirs inside that folder ('basefolder-of-MoviesCatalog'\sqlite3) : bin, include, lib
 - From the tempory path (e.g. C:\sqlite) copy following :
 - \> the .dll into sqlite3\bin
 - \> all .h   into sqlite3\include
 - \> the .lib (and if available also the .exp) into sqlite3\lib
-- now copy the .dll from sqlite3\bin into both <basefolder-of-MoviesCatalog>\X64\Debug and <basefolder-of-MoviesCatalog>\X64\Release
--
-- Be sure you've done previous before opening the solution in MSVC, because the solution depends on the property file which will 
-- be extracted into <basefolder-of-MoviesCatalog>\wx324
+- now copy the .dll from sqlite3\bin into both 'basefolder-of-MoviesCatalog'\X64\Debug and 'basefolder-of-MoviesCatalog'\X64\Release
+- Be sure you've done previous before opening the solution in MSVC, because the solution depends on the property file which will be extracted into 'basefolder-of-MoviesCatalog'\wx324
