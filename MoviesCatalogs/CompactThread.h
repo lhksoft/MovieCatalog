@@ -24,6 +24,11 @@
 #include "../lkSQLite3/lkSQL3Database.h"
 #include "../lkSQLite3/lkSQL3TempDB.h"
 
+#define conf_COMPACT_PATH				wxT("Compact")
+#define conf_COMPACT_DRY				wxT("Dry")
+#define conf_COMPACT_OLD				wxT("OldCovers")
+#define conf_COMPACT_NEW				wxT("NewCovers")
+
 class CompactThread : public wxThread
 {
 public:
@@ -65,6 +70,8 @@ private:
 	wxString					m_Path;
 
 	wxWindow*					m_pParent; // the window that will receive our CompactEvent's
+
+	bool						m_bDryRun; // we'll take it from our config-file, "[Compact]Dry=0|1", default=0, if not '1' will assume it's '0'
 
 	wxDECLARE_NO_COPY_CLASS(CompactThread);
 };

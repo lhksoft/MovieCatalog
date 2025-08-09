@@ -93,7 +93,7 @@ bool MyApp::OnInit()
 	wxStandardPathsBase& stdp = wxStandardPaths::Get();
 	stdp.UseAppInfo(wxStandardPathsBase::AppInfo_AppName | wxStandardPathsBase::AppInfo_VendorName);
 
-    //// Create a document manager
+	//// Create a document manager
     MainDocManager* docManager = new MainDocManager();
 
     //// Create a template relating to sqlite3 documents to their views

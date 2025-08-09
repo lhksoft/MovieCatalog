@@ -156,11 +156,11 @@ lkOpenImageDlg::lkOpenImageDlg() : wxFileDialogBase()
 {
 	Init();
 }
-lkOpenImageDlg::lkOpenImageDlg(wxWindow* parent, const wxString& defaultDir) : wxFileDialogBase()
+lkOpenImageDlg::lkOpenImageDlg(wxWindow* parent, const wxString& defaultDir, const wxString& defaultFile) : wxFileDialogBase()
 {
 	Init();
 
-	Create(parent, wxEmptyString, defaultDir);
+	Create(parent, defaultFile, defaultDir);
 }
 
 lkOpenImageDlg::~lkOpenImageDlg()

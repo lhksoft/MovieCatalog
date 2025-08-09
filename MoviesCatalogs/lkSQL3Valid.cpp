@@ -20,6 +20,8 @@
 
 #include "../lkControls/lkStaticText.h"
 #include "../lkSQLite3/lkSQL3Validators.h"
+#include "../lkControls/lkConfigTools.h"
+#include "TMovies.h" // for conf_MOVIES_PATH, conf_MOVIES_COVERS
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 #include <wx/stattext.h>
@@ -453,23 +455,60 @@ bool lkSQL3ImgComboValidator::TransferFromWindow()
 
 wxIMPLEMENT_DYNAMIC_CLASS(lkSQL3ImgPathValidator, wxValidator)
 
-lkSQL3ImgPathValidator::lkSQL3ImgPathValidator() : wxValidator(), m_sBasePath()
+lkSQL3ImgPathValidator::lkSQL3ImgPathValidator() : wxValidator(), m_sCovers()
 {
 	m_pField = NULL;
-
-	wxStandardPathsBase& stdp = wxStandardPaths::Get();
-	m_sBasePath = stdp.GetAppDocumentsDir();
+	GetCoversPath();
 }
-lkSQL3ImgPathValidator::lkSQL3ImgPathValidator(lkSQL3FieldData_Text* pFld) : wxValidator(), m_sBasePath()
+lkSQL3ImgPathValidator::lkSQL3ImgPathValidator(lkSQL3FieldData_Text* pFld) : wxValidator(), m_sCovers()
 {
 	m_pField = pFld;
-
-	wxStandardPathsBase& stdp = wxStandardPaths::Get();
-	m_sBasePath = stdp.GetAppDocumentsDir();
+	GetCoversPath();
 }
-lkSQL3ImgPathValidator::lkSQL3ImgPathValidator(const lkSQL3ImgPathValidator& other) : wxValidator(other), m_sBasePath(other.m_sBasePath)
+lkSQL3ImgPathValidator::lkSQL3ImgPathValidator(const lkSQL3ImgPathValidator& other) : wxValidator(other), m_sCovers(other.m_sCovers)
 {
 	m_pField = other.m_pField;
+}
+
+void lkSQL3ImgPathValidator::GetCoversPath()
+{
+	wxStandardPathsBase& stdp = wxStandardPaths::Get();
+	wxString base = stdp.GetAppDocumentsDir();
+	if (base.Right(1) != wxFileName::GetPathSeparator())
+		base += wxFileName::GetPathSeparator();
+
+	m_sCovers = GetConfigString(conf_MOVIES_PATH, conf_MOVIES_COVERS);
+	if (!m_sCovers.IsEmpty())
+	{
+		if ((m_sCovers.Find(wxT("/")) == wxNOT_FOUND) && (m_sCovers.Find(wxT("\\")) == wxNOT_FOUND))
+		{ // assuming not a full path, just a subdir inside App-Data-dir
+			m_sCovers = (base + m_sCovers);
+		}
+		// else, it's a full-path
+	}
+	else
+		m_sCovers = base; // old-style
+
+	if (!m_sCovers.IsEmpty())
+	{
+		if (wxFileName::GetPathSeparator() == '\\')
+		{
+			if (m_sCovers.Find('/') != wxNOT_FOUND)
+				m_sCovers.Replace(wxT("/"), wxT("\\"), true);
+		}
+		else if (wxFileName::GetPathSeparator() == '/')
+		{
+			if (m_sCovers.Find('\\') != wxNOT_FOUND)
+				m_sCovers.Replace(wxT("\\"), wxT("/"), true);
+		}
+		if (!wxDirExists(m_sCovers))
+			m_sCovers = wxT("");
+		else
+		{
+			if (m_sCovers.Right(1) != wxFileName::GetPathSeparator())
+				m_sCovers += wxFileName::GetPathSeparator();
+		}
+	}
 }
 
 //virtual
@@ -492,10 +531,9 @@ lkStaticImage* lkSQL3ImgPathValidator::GetImageCtrl()
 
 wxString lkSQL3ImgPathValidator::MakeFullPath(const wxString& partial)
 {
-	wxString value;
-	if ( !partial.IsEmpty() )
+	wxString value = partial;
+	if ( !value.IsEmpty() )
 	{
-		value = partial;
 		if ( wxFileName::GetPathSeparator() == '\\' )
 		{
 			if ( value.Find('/') != wxNOT_FOUND )
@@ -507,22 +545,38 @@ wxString lkSQL3ImgPathValidator::MakeFullPath(const wxString& partial)
 				value.Replace(wxT("\\"), wxT("/"), true);
 		}
 
-		if ( !wxFileExists(value) )
-		{
-			if ( !m_sBasePath.IsEmpty() )
+		if (!wxFileExists(value))
+		{ // no full path
+			if (!m_sCovers.IsEmpty())
 			{
-				wxString s = m_sBasePath;
-				if ( (value[0] != wxFileName::GetPathSeparator()) && (s[s.Len() - 1] != wxFileName::GetPathSeparator()) )
-					s += wxFileName::GetPathSeparator();
-				s += value;
-
-				if ( wxFileExists(s) )
-					value = s;
+				wxString sCovers = m_sCovers;
+				sCovers += value;
+				if (wxFileExists(sCovers))
+					value = sCovers;
 				else
 					value = wxT("");
 			}
 			else
 				value = wxT("");
+/*
+			else
+			{ // old-style
+				if (!m_sBasePath.IsEmpty())
+				{
+					wxString s = m_sBasePath;
+					if ((value[0] != wxFileName::GetPathSeparator()) && (s[s.Len() - 1] != wxFileName::GetPathSeparator()))
+						s += wxFileName::GetPathSeparator();
+					s += value;
+
+					if (wxFileExists(s))
+						value = s;
+					else
+						value = wxT("");
+				}
+				else
+					value = wxT("");
+			}
+*/
 		}
 	}
 
@@ -548,10 +602,7 @@ bool lkSQL3ImgPathValidator::TransferToWindow()
 		value = MakeFullPath(value);
 
 	if ( !value.IsEmpty() )
-	{
-		// try to extract current field and set it into our control
 		control->SetImage(value);
-	}
 	else
 		control->SetEmpty(true);
 
@@ -575,8 +626,12 @@ bool lkSQL3ImgPathValidator::TransferFromWindow()
 	if ( value.IsEmpty() )
 	{
 		wxString orig = m_pField->GetValue2();
-		if ( !orig.IsEmpty() )
+		if (!orig.IsEmpty())
 		{
+			orig = MakeFullPath(orig);
+			if (orig.IsEmpty())
+				return true; // leave in the DB as is, maybe no acces to the path but then don't remove the entry
+			/*
 			if ( wxFileName::GetPathSeparator() == '\\' )
 			{
 				if ( orig.Find('/') != wxNOT_FOUND )
@@ -602,7 +657,7 @@ bool lkSQL3ImgPathValidator::TransferFromWindow()
 				if ( !wxFileExists(orig) )
 					return true; // leave in the DB as is, maybe no acces to the path but then don't remove the entry
 			}
-
+*/
 			m_pField->SetValueNull();
 		}
 	}
@@ -614,11 +669,9 @@ bool lkSQL3ImgPathValidator::TransferFromWindow()
 			wxString orig = MakeFullPath(m_pField->GetValue2());
 			if ( orig.IsEmpty() || !value.IsSameAs(orig, false) )
 			{
-				if ( !m_sBasePath.IsEmpty() )
+				if ( !m_sCovers.IsEmpty() )
 				{
-					wxString s = m_sBasePath;
-					if ( s[s.Length() - 1] != wxFileName::GetPathSeparator() )
-						s += wxFileName::GetPathSeparator();
+					wxString s = m_sCovers;
 					wxString szLeft = value.Left(s.Len());
 					if ( szLeft.IsSameAs(s, false) )
 					{

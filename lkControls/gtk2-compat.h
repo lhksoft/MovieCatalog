@@ -25,6 +25,8 @@
 //         functions even if GTK_CHECK_VERSION would indicate the function is
 //         already available in GTK+.
 
+#ifndef __WXMSW__
+
 #ifndef __WXGTK3__
 
 // ----------------------------------------------------------------------------
@@ -681,5 +683,7 @@ inline bool wx_is_at_least_gtk2(int WXUNUSED(minor))
 }
 
 #endif // !__WXGTK3__/__WXGTK3__
+
+#endif // !__WXMSW__
 
 #endif // _LK_GTK_PRIVATE_COMPAT_H_

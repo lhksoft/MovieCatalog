@@ -509,7 +509,6 @@ bool TStorage::SetLinked(lkSQL3Database* dbDest, wxUint64 newStorageID) // calle
 	if ( !dbDest || !dbDest->IsOpen() || (newStorageID == 0) )
 		return false;
 
-	wxUint64 cnt;
 	TStorage rs(dbDest);
 	wxString whr;
 	whr.Printf(wxT("([ROWID] = %I64u)"), newStorageID);
@@ -523,7 +522,7 @@ bool TStorage::SetLinked(lkSQL3Database* dbDest, wxUint64 newStorageID) // calle
 		rs.SetLinkedValue(true);
 		rs.Update();
 	}
-	catch ( const lkSQL3Exception& e )
+	catch ( const lkSQL3Exception& )
 	{
 		throw;
 		return false;

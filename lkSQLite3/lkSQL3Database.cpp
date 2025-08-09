@@ -12,7 +12,11 @@
 #include "lkSQL3Statement.h"
 #include "lkSQL3Exception.h"
 
+#ifdef __WXMSW__
+#define SQLITE_API __declspec(dllimport)
+#endif // __WXMSW__
 #include <sqlite3.h>
+
 #include <wx/filename.h>
 
 static int ToSQL3OpenFlags(wxUint32 flags)

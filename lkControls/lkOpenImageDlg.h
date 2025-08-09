@@ -37,7 +37,7 @@ class lkOpenImageDlg : public wxFileDialogBase
 
 public:
 	lkOpenImageDlg();
-	lkOpenImageDlg(wxWindow* parent, const wxString& defaultDir = wxEmptyString);
+	lkOpenImageDlg(wxWindow* parent, const wxString& defaultDir = wxEmptyString, const wxString& defaultFile = wxEmptyString);
 	virtual ~lkOpenImageDlg();
 
 protected:

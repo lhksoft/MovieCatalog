@@ -168,8 +168,9 @@ public:
 
 protected:
 	lkSQL3FieldData_Text*			m_pField;
-	wxString						m_sBasePath; // wxStandardPaths::Get().GetAppDocumentsDir()
+	wxString						m_sCovers; // from INI : [Movies]Covers (if set)
 
+	void							GetCoversPath(void); // called from inside c'tor
 	lkStaticImage*					GetImageCtrl(void); // works with lkStaticImage and ImageCtrl
 	wxString						MakeFullPath(const wxString& partial);
 

@@ -27,6 +27,14 @@
 #include "../lkSQLite3/lkSQL3Field.h"
 #include "../lkSQLite3/lkSQL3Exception.h"
 
+#include "../lkControls/lkConfigTools.h"
+#include "TMovies_private.h" // Tools used for resorting Covers in CompactThread
+
+#include <wx/stdpaths.h>
+#include <wx/filename.h>
+// #include <wx/file.h> 
+#include <wx/textfile.h>
+
 // static definitions for setting the fields of new table
 static sqlTblField_t t3MoviesFlds[] = {
 	{ t3Movies_TITLE,    sqlFieldType::sqlText,  true, false,  0 },
@@ -268,7 +276,7 @@ void TMovies::SetRateValue(wxUint8 _r)
 wxString TMovies::GetCountryValue() const // empty if NULL
 {
 	wxASSERT(m_pFldCountry);
-	return m_pFldCountry->GetValue2();
+	return (m_pFldCountry) ? m_pFldCountry->GetValue2() : wxT("");
 }
 void TMovies::SetCountryValue(const wxString& _c)
 {
@@ -280,7 +288,7 @@ lkDateTime TMovies::GetDateValue() const
 {
 	wxASSERT(m_pFldDate);
 	lkDateTime dt;
-	if ( m_pFldDate->IsNull() )
+	if ( (m_pFldDate == NULL ) || m_pFldDate->IsNull() )
 		dt.SetInvalid();
 	else
 		dt = m_pFldDate->GetValue2();
@@ -298,7 +306,7 @@ void TMovies::SetDateValue(const lkDateTime& _d) // it actually is a double .. i
 bool TMovies::GetYearValue() const
 {
 	wxASSERT(m_pFldYear);
-	return m_pFldYear->Getbool();
+	return (m_pFldYear) ? m_pFldYear->Getbool() : false;
 }
 void TMovies::SetYearValue(bool _y)
 {
@@ -309,7 +317,7 @@ void TMovies::SetYearValue(bool _y)
 bool TMovies::GetSerieValue() const
 {
 	wxASSERT(m_pFldSerie);
-	return m_pFldSerie->Getbool();
+	return (m_pFldSerie) ? m_pFldSerie->Getbool() : false;
 }
 void TMovies::SetSerieValue(bool _s)
 {
@@ -320,7 +328,7 @@ void TMovies::SetSerieValue(bool _s)
 wxString TMovies::GetUrlValue() const // empty if NULL
 {
 	wxASSERT(m_pFldURL);
-	return m_pFldURL->GetValue2();
+	return (m_pFldURL) ? m_pFldURL->GetValue2() : wxT("");
 }
 void TMovies::SetUrlValue(const wxString& _u)
 {
@@ -331,7 +339,7 @@ void TMovies::SetUrlValue(const wxString& _u)
 wxString TMovies::GetCoverValue() const // empty if NULL
 {
 	wxASSERT(m_pFldCover);
-	return m_pFldCover->GetValue2();
+	return (m_pFldCover) ? m_pFldCover->GetValue2() : wxT(""); 
 }
 void TMovies::SetCoverValue(const wxString& _c)
 {
@@ -683,3 +691,258 @@ bool TMovies::Compact(wxThread* thr, lkSQL3Database* dbSrc, lkSQL3Database* dbDe
 	bOK = (bOK) ? !thr->TestDestroy() : bOK;
 	return bOK;
 }
+
+//static
+bool TMovies::RewriteCovers(wxThread* thr, lkSQL3Database* dbSrc)
+{
+	if (!thr || !dbSrc || !dbSrc->IsOpen())
+		return false;
+
+	bool bOK = true;
+
+	wxString sNew = GetConfigString(conf_COMPACT_PATH, conf_COMPACT_NEW);
+	wxString sOld = GetConfigString(conf_COMPACT_PATH, conf_COMPACT_OLD);
+
+	if (sNew.IsEmpty())
+	{
+		if (sOld.IsEmpty())
+			return true; // nothing to do here..
+		else
+			return false; // OldCovers was set, but no NewCovers so failure..
+	}
+	wxStandardPathsBase& stdp = wxStandardPaths::Get();
+	wxString sBase = GetConfigString(conf_MOVIES_PATH, conf_MOVIES_COVERS);
+	bool bModif = false;
+	bool hasCoverSet = false;
+	wxUint32 uLog = 0;
+
+	wxFileName fn(stdp.GetAppDocumentsDir(), wxT("RewriteCovers_LOG"), wxT("csv"));
+	wxString txtOut = fn.GetFullPath();
+	if (wxFile::Exists(txtOut))
+		wxRemove(txtOut);
+	wxTextFile txtFile(txtOut);
+
+	TMovies rsSrc(dbSrc);
+
+	if (sBase.IsEmpty())
+		sBase = stdp.GetAppDocumentsDir();
+	if (!sBase.IsEmpty())
+	{
+		sBase = tmCorrectPath(sBase);
+		if (!wxDirExists(sBase))
+			sBase = wxT("");
+		else
+		{
+			if (sBase.Right(1) != wxFileName::GetPathSeparator())
+				sBase += wxFileName::GetPathSeparator();
+		}
+	}
+	if (!sBase.IsEmpty())
+	{
+		wxString sA=sBase, sB = GetConfigString(conf_MOVIES_PATH, conf_MOVIES_COVERS);
+		sA.MakeLower(); sB.MakeLower();
+		hasCoverSet = (!sB.IsEmpty() && (sA.Find(sB) == 0));
+
+		if (sBase.Find('\\') != wxNOT_FOUND)
+			sBase.Replace(wxT("\\"), wxT("/"), true);
+	}
+	if (!sOld.IsEmpty())
+	{
+		sOld = tmCorrectPath(sOld);
+		if (!wxDirExists(sOld))
+			if ((sOld.Find(wxT("/")) == wxNOT_FOUND) && (sOld.Find(wxT("\\")) == wxNOT_FOUND))
+			{
+				wxString s = stdp.GetAppDocumentsDir();
+				if (s.Right(1) != wxFileName::GetPathSeparator())
+					s += wxFileName::GetPathSeparator();
+				s += sOld;
+				sOld = s;
+			}
+		if (!wxDirExists(sOld))
+			sOld = wxT("");
+		else
+		{
+			if (sOld.Right(1) != wxFileName::GetPathSeparator())
+				sOld += wxFileName::GetPathSeparator();
+		}
+	}
+	if (!sNew.IsEmpty())
+	{
+		if (sOld.IsEmpty())
+			if (!sBase.IsEmpty())
+				sOld = sBase;
+		if (sOld.IsEmpty())
+			sNew = wxT("");
+		if (!sNew.IsEmpty())
+		{
+			if (!wxDirExists(sNew))
+			{
+				sNew = tmCorrectPath(sNew);
+				if ((sNew.Find(wxT("/")) == wxNOT_FOUND) && (sNew.Find(wxT("\\")) == wxNOT_FOUND))
+				{
+					wxString s = stdp.GetAppDocumentsDir();
+					if (s.Right(1) != wxFileName::GetPathSeparator())
+						s += wxFileName::GetPathSeparator();
+					s += sNew;
+					sNew = s;
+				}
+				else
+				{
+					wxFileName fn(sNew);
+					if (!fn.Mkdir(wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL))
+						sNew = wxT("");
+				}
+			}
+			if (!sNew.IsEmpty())
+				if (sNew.Right(1) != wxFileName::GetPathSeparator())
+					sNew += wxFileName::GetPathSeparator();
+		}
+	}
+	if (!sOld.IsEmpty())
+		if (sOld.Find('\\') != wxNOT_FOUND)
+			sOld.Replace(wxT("\\"), wxT("/"), true);
+	if (!sNew.IsEmpty())
+		if (sNew.Find('\\') != wxNOT_FOUND)
+			sNew.Replace(wxT("\\"), wxT("/"), true);
+
+	if (sOld.IsEmpty() || sNew.IsEmpty())
+		return false;
+	bOK = txtFile.Create();
+
+	if (!bOK)
+	{
+		if (wxFile::Exists(txtOut))
+			wxRemove(txtOut);
+		return false;
+	}
+
+	rsSrc.SetOrder(wxT("[ROWID]"));
+	try
+	{
+		rsSrc.Open();
+
+		wxString sLine, s1;
+		wxString sCvr, sOldPath, sNewPath, sNewFile;
+
+		(dynamic_cast<CompactThread*>(thr))->InitProgressCtrl(0, rsSrc.GetRowCount());
+
+		rsSrc.MoveFirst();
+		while (!thr->TestDestroy() && !rsSrc.IsEOF())
+		{
+			sLine = wxT("");
+			if (!(sCvr = rsSrc.GetCoverValue()).IsEmpty())
+			{
+				// make the full path
+				sOldPath = tmMakeFullPath(sBase, sCvr);
+
+				if (hasCoverSet)
+					s1 = tmCoverResort(sOldPath, sOld);
+				else
+					s1 = tmMoveFirst(sOldPath, sOld);
+
+				if (s1.IsEmpty())
+				{ // failure ?
+					sLine += tmMakeLog(rsSrc.GetActualCurRow(), rsSrc.GetTitleValue());
+					s1.Printf(wxT("No return value from '%s'"), (hasCoverSet) ? wxT("tmCoverResort") : wxT("tmMoveFirst"));
+					sLine += s1;
+					uLog++;
+				}
+				else
+				{
+					sNewFile = s1;
+					if (sNewFile.Find('\\') != wxNOT_FOUND)
+						sNewFile.Replace(wxT("\\"), wxT("/"), true);
+					sNewPath = sNew;
+					sNewPath += s1;
+					sNewPath = tmCorrectPath(sNewPath);
+					sOldPath = tmCorrectPath(sOldPath);
+
+					if (!wxFileExists(sOldPath))
+					{
+						sLine += tmMakeLog(rsSrc.GetActualCurRow(), rsSrc.GetTitleValue());
+						sLine += wxT("Cover does not exist ");
+						sLine += sOldPath;
+						uLog++;
+					}
+					else
+					{
+						(dynamic_cast<CompactThread*>(thr))->SendInfoSec(sNewFile);
+						if (wxFileExists(sNewPath))
+						{
+							if (tmCompareFiles(sOldPath, sNewPath))
+							{ // is the same already so set this cover into the DB
+								rsSrc.SetCoverValue(sNewFile);
+								rsSrc.Update();
+								bModif = true;
+							}
+							else
+							{ // different file size, notify in LOG
+								sLine += tmMakeLog(rsSrc.GetActualCurRow(), rsSrc.GetTitleValue());
+								s1.Printf(wxT("Cover exist but different in size, orig: \"%s\", new: \"%s\""), sOldPath, sNewPath);
+								sLine += s1;
+								uLog++;
+							}
+						}
+						else
+						{ // does not yet exist, so copying to new path
+							if (tmCopyFile(sOldPath, sNewPath))
+							{
+								rsSrc.SetCoverValue(sNewFile);
+								rsSrc.Update();
+								bModif = true;
+							}
+							else
+							{
+								sLine += tmMakeLog(rsSrc.GetActualCurRow(), rsSrc.GetTitleValue());
+								s1.Printf(wxT("CopyFailure, orig: \"%s\", new: \"%s\""), sOldPath, sNewPath);
+								sLine += s1;
+								uLog++;
+							}
+						}
+					}
+				}
+			}
+
+			if (!sLine.IsEmpty())
+				txtFile.AddLine(sLine);
+
+			rsSrc.MoveNext();
+			(dynamic_cast<CompactThread*>(thr))->StepProgressCtrl(2);
+		}
+	}
+	catch (const lkSQL3Exception& e)
+	{
+		wxString sql;
+		sql.Printf(wxT("TMovies::Compact : %s"), ((lkSQL3Exception*)&e)->GetError());
+		(dynamic_cast<CompactThread*>(thr))->SetErrString(sql);
+		txtFile.Clear();
+		txtFile.Close();
+		if (wxFile::Exists(txtOut))
+			wxRemove(txtOut);
+		return false;
+	}
+
+	if (uLog > 0)
+		txtFile.Write();
+	else
+		txtFile.Clear();
+	txtFile.Close();
+	if (uLog == 0)
+		wxRemove(txtOut);
+
+	if (bModif)
+	{
+		wxString s = GetConfigString(conf_COMPACT_PATH, conf_COMPACT_NEW);
+		SetConfigString(conf_MOVIES_PATH, conf_MOVIES_COVERS, s);
+
+		// reset dirs-timevalues with any copied files
+		tmResetDirTimes(sNew);
+	}
+
+	if (bOK)
+		(dynamic_cast<CompactThread*>(thr))->StepProgressCtrl(1);
+
+	return bOK;
+}
+
+

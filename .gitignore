@@ -1,0 +1,11 @@
+.vs/
+X64
+build/
+MovieCatalog/
+sqlite3/
+wx324/
+CMakeFiles
+Makefile
+cmake_install.cmake
+MoviesCatalogs/MoviesCatalog.aps
+MoviesCatalogs/resource.h

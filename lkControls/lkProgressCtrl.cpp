@@ -98,7 +98,7 @@ int lkProgressCtrl::GetValue() const
 
 void lkProgressCtrl::SetStep(int step)
 {
-	wxASSERT(step < m_rangeMax);
+	wxASSERT(step <= m_rangeMax);
 	wxASSERT(step > m_rangeMin);
 	m_Step = step;
 }

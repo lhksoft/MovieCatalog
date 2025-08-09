@@ -366,7 +366,7 @@ bool lkFileCtrl::Create( wxWindow *parent,
 
     m_list->GoToDir( m_dir );
     UpdateControls();
-    m_text->SetValue( m_fileName );
+	m_text->SetValue(defaultFileName);
 
     m_ignoreChanges = false;
 
@@ -486,7 +486,8 @@ bool lkFileCtrl::SetFilename( const wxString& name )
     wxCHECK_MSG( dir.empty(), false,
                  wxS( "can't specify directory component to SetFilename" ) );
 
-    m_noSelChgEvent = true;
+	m_noSelChgEvent = false;
+	//    m_noSelChgEvent = true;
 
     m_text->ChangeValue( name );
 
@@ -518,7 +519,7 @@ bool lkFileCtrl::SetFilename( const wxString& name )
         m_list->EnsureVisible( item );
     }
 
-    m_noSelChgEvent = false;
+//    m_noSelChgEvent = false;
 
     return true;
 }

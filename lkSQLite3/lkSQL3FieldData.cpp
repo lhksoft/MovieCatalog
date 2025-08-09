@@ -201,13 +201,14 @@ void lkSQL3FieldData_Int::SetValue(wxInt64 _i)
 void lkSQL3FieldData_Int::SetValueNull()
 {
 	if ( IsNull() ) return;
-
+/*
 	if ( IsNotNull() && !UseDefault() )
 	{
 		SetNull(false);
 		SetValue(0);
 	}
 	else
+*/
 		SetNull(true); // let database decide what to do, use default or realy set to NULL
 
 	SetDirty();
@@ -262,13 +263,14 @@ void lkSQL3FieldData_Real::SetValue(double _d)
 void lkSQL3FieldData_Real::SetValueNull()
 {
 	if ( IsNull() ) return;
-
+/*
 	if ( IsNotNull() && !UseDefault() )
 	{
 		SetNull(false);
 		SetValue(0.0);
 	}
 	else
+*/
 		SetNull(true); // let database decide what to do, use default or realy set to NULL
 
 	SetDirty();
@@ -311,7 +313,7 @@ void lkSQL3FieldData_Text::SetValueNull()
 {
 	if ( IsNull() ) return;
 
-	if ( IsNotNull() )
+//	if ( IsNotNull() )
 	{
 		SetNull(true); // let database decide what to do, use default or realy set to NULL
 		SetDirty();

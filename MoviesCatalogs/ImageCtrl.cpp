@@ -280,7 +280,25 @@ wxString ImgPathCtrl::GetImage() const
 void ImgPathCtrl::NewImage()
 {
 	wxString P = GetConfigString(m_ConfigSection, conf_OPENKEY);
-	lkOpenImageDlg* opImg = new lkOpenImageDlg(this, P);
+	wxString F;
+	{
+		F = GetImage();
+		if (!F.IsEmpty() && wxFileExists(F))
+		{
+			wxString fPath, fName, fExt;
+			wxFileName::SplitPath(F, &fPath, &fName, &fExt);
+			if (!fPath.IsEmpty() && (fPath.Right(1) != wxFileName::GetPathSeparator()))
+				fPath += wxFileName::GetPathSeparator();
+			if (!fPath.IsEmpty() && !fName.IsEmpty() && wxDirExists(fPath))
+			{
+				P = fPath;
+				F = fName;
+				if (!fExt.IsEmpty())
+					F += (wxT(".") + fExt);
+			}
+		}
+	}
+	lkOpenImageDlg* opImg = new lkOpenImageDlg(this, P, F);
 	if ( m_pView )
 		m_pView->SetCanClose(false);
 	if ( opImg->ShowModal() == wxID_OK )

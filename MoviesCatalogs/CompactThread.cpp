@@ -43,6 +43,8 @@
 #include "../lkSQLite3/lkSQL3Field.h"
 #include "../lkSQLite3/lkSQL3Exception.h"
 
+#include "../lkControls/lkConfigTools.h"
+
 CompactThread::CompactThread(wxWindow* parent, const wxString& path) : wxThread(wxTHREAD_DETACHED), m_SrcDB(), m_TmpDB(), m_DstDB(), m_Path(), m_Error()
 {
 	wxASSERT(parent && parent->IsKindOf(wxCLASSINFO(CompactFrame)));
@@ -50,6 +52,8 @@ CompactThread::CompactThread(wxWindow* parent, const wxString& path) : wxThread(
 	m_Path = path.Clone();
 	m_TotalRecords = 0;
 	m_pParent = parent;
+
+	m_bDryRun = (GetConfigInt(conf_COMPACT_PATH, conf_COMPACT_DRY) == 1) ? true : false;
 }
 CompactThread::~CompactThread()
 {
@@ -93,7 +97,7 @@ wxThread::ExitCode CompactThread::Entry()
 	}
 	// else
 	bool bOK = m_SrcDB.Close();
-	if ( bOK )
+	if ( !m_bDryRun && bOK )
 		bOK = m_DstDB.Commit();
 	m_TmpDB.Close();
 
@@ -116,23 +120,27 @@ bool CompactThread::Initialize()
 	try
 	{
 		m_SrcDB.Open(m_Path);
-		m_DstDB.OpenAsTemp(m_Path);
-		m_TmpDB.Open(wxT(":memory:"), lkSQL3Database::ofCreate | lkSQL3Database::ofMemory | lkSQL3Database::ofDelOnClose);
 
 		// Validate SourceDB
-		if ( !TestDestroy() )
-			if ( !ValidateDatabase() )
-				return false;
-
-		// Create new tables in DestDB
-		if ( !TestDestroy() )
-			if ( !CreateTables() )
+		if (!TestDestroy())
+			if (!ValidateDatabase())
 				return false;
 
 		// Count amount of records to process
-		if ( !TestDestroy() )
-			if ( (totalRecords = CountRecords()) == 0 )
+		if (!TestDestroy())
+			if ((totalRecords = CountRecords()) == 0)
 				return false;
+
+		if (!m_bDryRun)
+		{
+			m_DstDB.OpenAsTemp(m_Path);
+			m_TmpDB.Open(wxT(":memory:"), lkSQL3Database::ofCreate | lkSQL3Database::ofMemory | lkSQL3Database::ofDelOnClose);
+
+			// Create new tables in DestDB
+			if (!TestDestroy())
+				if (!CreateTables())
+					return false;
+		}
 	}
 	catch ( const lkSQL3Exception& e )
 	{
@@ -144,7 +152,7 @@ bool CompactThread::Initialize()
 		return false;
 
 	m_TotalRecords = totalRecords;
-	InitProgressCtrl(1, totalRecords+6); // 6: actions to perform at the end for correcting the Config file
+	InitProgressCtrl(1, totalRecords+7); // 7: 6 actions to perform at the end for correcting the Config file + 1 for rewriting the covers
 
 	return true;
 }
@@ -205,6 +213,7 @@ void CompactThread::StepProgressCtrl(int i)
 
 bool CompactThread::CreateTables()
 {
+	wxASSERT(!m_bDryRun); // be sure not to come here if in dry mode
 	if ( !m_DstDB.IsOpen() ) return false;
 
 	bool bRet = true;
@@ -288,73 +297,86 @@ wxUint64 CompactThread::CountRecord(const wxString& table)
 bool CompactThread::DoActual()
 {
 	bool bOK = true;
-	// Country
-	if ( bOK ) bOK = TCountry::Compact(this, &m_SrcDB, &m_DstDB);
-	if ( !bOK || TestDestroy() ) return false;
-
-	// == Requirements for TMovies
-	SendInfoProcessing(t3Movies);
-	if ( bOK ) bOK = TCategory::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TGenre::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TJudge::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TRating::Compact(this, &m_SrcDB, &m_DstDB);
-	if ( !bOK || TestDestroy() ) return false;
-	// == Requirements for TBase
-	SendInfoProcessing(t3Base);
-	if ( bOK ) bOK = TMovies::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TOrigine::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TQuality::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TScreen::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	// == Requirements for TStorage
-	SendInfoProcessing(t3Storage);
-	if ( bOK ) bOK = TLocation::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TMedium::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	// == Requirements for TGroup
-	SendInfoProcessing(t3Group);
-	if ( bOK ) bOK = TBase::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	if ( bOK ) bOK = TStorage::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	SendInfoMain(wxEmptyString);
-	if ( bOK ) bOK = TGroup::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
-	if ( !bOK || TestDestroy() ) return false;
-	SendInfoMain(wxT("Correcting Configuration File"));
-	SendInfoSec(wxEmptyString);
-	InitProgressCtrl(0, 6);
-	try
-	{
-		TOrigine::CorrectConfig(&m_TmpDB);
-		if ( TestDestroy() ) return false;
-		StepProgressCtrl(0);
-		TQuality::CorrectConfig(&m_TmpDB);
-		if ( TestDestroy() ) return false;
-		StepProgressCtrl(0);
-		TScreen::CorrectConfig(&m_TmpDB);
-		if ( TestDestroy() ) return false;
-		StepProgressCtrl(0);
-		StorageFilterDlg::CorrectConfig(&m_TmpDB);
-		if ( TestDestroy() ) return false;
-		StepProgressCtrl(0);
-		MoviesFilterDlg::CorrectConfig(&m_TmpDB);
-		if ( TestDestroy() ) return false;
-		StepProgressCtrl(0);
-		BaseFilterDlg::CorrectConfig(&m_TmpDB);
-		StepProgressCtrl(0);
+	if (!m_bDryRun)
+	{ // be sure not to do following if in dry mode
+		SendInfoMain(wxT("Resorting Covers"));
+		if (bOK) bOK = TMovies::RewriteCovers(this, &m_SrcDB);
+		if (bOK) bOK = !TestDestroy();
+		// Country
+		SendInfoMain(wxT("Initializing.."));
+		if (bOK) bOK = TCountry::Compact(this, &m_SrcDB, &m_DstDB);
+		if (!bOK || TestDestroy()) return false;
+		// == Requirements for TMovies
+		SendInfoProcessing(t3Movies);
+		if (bOK) bOK = TCategory::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TGenre::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TJudge::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TRating::Compact(this, &m_SrcDB, &m_DstDB);
+		if (!bOK || TestDestroy()) return false;
+		// == Requirements for TBase
+		SendInfoProcessing(t3Base);
+		if (bOK) bOK = TMovies::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TOrigine::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TQuality::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TScreen::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		// == Requirements for TStorage
+		SendInfoProcessing(t3Storage);
+		if (bOK) bOK = TLocation::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TMedium::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		// == Requirements for TGroup
+		SendInfoProcessing(t3Group);
+		if (bOK) bOK = TBase::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		if (bOK) bOK = TStorage::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		SendInfoMain(wxEmptyString);
+		if (bOK) bOK = TGroup::Compact(this, &m_SrcDB, &m_DstDB, &m_TmpDB);
+		if (!bOK || TestDestroy()) return false;
+		SendInfoMain(wxT("Correcting Configuration File"));
+		SendInfoSec(wxEmptyString);
+		InitProgressCtrl(0, 6);
+		try
+		{
+			TOrigine::CorrectConfig(&m_TmpDB);
+			if (TestDestroy()) return false;
+			StepProgressCtrl(0);
+			TQuality::CorrectConfig(&m_TmpDB);
+			if (TestDestroy()) return false;
+			StepProgressCtrl(0);
+			TScreen::CorrectConfig(&m_TmpDB);
+			if (TestDestroy()) return false;
+			StepProgressCtrl(0);
+			StorageFilterDlg::CorrectConfig(&m_TmpDB);
+			if (TestDestroy()) return false;
+			StepProgressCtrl(0);
+			MoviesFilterDlg::CorrectConfig(&m_TmpDB);
+			if (TestDestroy()) return false;
+			StepProgressCtrl(0);
+			BaseFilterDlg::CorrectConfig(&m_TmpDB);
+			StepProgressCtrl(0);
+		}
+		catch (const lkSQL3Exception& e)
+		{
+			SetErrString(((lkSQL3Exception*)&e)->GetError());
+			return false;
+		}
 	}
-	catch ( const lkSQL3Exception& e )
+	else
 	{
-		SetErrString(((lkSQL3Exception*)&e)->GetError());
-		return false;
+		// do our testing what needs to be done when doing "dry-run"
+		InitProgressCtrl(1, 1);
+		SendInfoMain(wxT("Resorting Covers"));
+		if (bOK) bOK = TMovies::RewriteCovers(this, &m_SrcDB);
+		if (bOK) bOK = !TestDestroy();
 	}
-
-	return true;
+	return bOK;
 }

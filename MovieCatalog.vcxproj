@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{1cf569aa-ea11-455d-a8a1-eeb90348d716}</ProjectGuid>
+    <RootNamespace>MovieCatalog</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="wx324\wxwidgets.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="wx324\wxwidgets.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)sqlite3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)sqlite3\lib\sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>LinkVerboseLib</ShowProgress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)sqlite3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)sqlite3\lib\sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>LinkVerboseLib</ShowProgress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="lkControls\Form.xpms" />
+    <None Include="lkControls\lkRecordButtons.xpms" />
+    <None Include="lkControls\rec_navigation.xpms" />
+    <None Include="lkControls\rec_operation.xpms" />
+    <None Include="MoviesCatalogs\wx\msw\blank.cur" />
+    <None Include="MoviesCatalogs\wx\msw\bullseye.cur" />
+    <None Include="MoviesCatalogs\wx\msw\cross.cur" />
+    <None Include="MoviesCatalogs\wx\msw\hand.cur" />
+    <None Include="MoviesCatalogs\wx\msw\magnif1.cur" />
+    <None Include="MoviesCatalogs\wx\msw\pbrush.cur" />
+    <None Include="MoviesCatalogs\wx\msw\pencil.cur" />
+    <None Include="MoviesCatalogs\wx\msw\pntleft.cur" />
+    <None Include="MoviesCatalogs\wx\msw\pntright.cur" />
+    <None Include="MoviesCatalogs\wx\msw\roller.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lkControls\gtk2-compat.h" />
+    <ClInclude Include="lkControls\lkBoxInit.h" />
+    <ClInclude Include="lkControls\lkCanvas.h" />
+    <ClInclude Include="lkControls\lkChkImgListbox.h" />
+    <ClInclude Include="lkControls\lkClientData.h" />
+    <ClInclude Include="lkControls\lkColour.h" />
+    <ClInclude Include="lkControls\lkConfigTools.h" />
+    <ClInclude Include="lkControls\lkCtrlData.h" />
+    <ClInclude Include="lkControls\lkDialog.h" />
+    <ClInclude Include="lkControls\lkDialogEx.h" />
+    <ClInclude Include="lkControls\lkDocument.h" />
+    <ClInclude Include="lkControls\lkFileConfig.h" />
+    <ClInclude Include="lkControls\lkFileConfig_private.h" />
+    <ClInclude Include="lkControls\lkFileCtrl.h" />
+    <ClInclude Include="lkControls\lkHyperlinkCtrl.h" />
+    <ClInclude Include="lkControls\lkHyperlinkCtrl_private.h" />
+    <ClInclude Include="lkControls\lkImageBox.h" />
+    <ClInclude Include="lkControls\lkImageList.h" />
+    <ClInclude Include="lkControls\lkImgComboBox.h" />
+    <ClInclude Include="lkControls\lkItemContainer.h" />
+    <ClInclude Include="lkControls\lkOpenImageDlg.h" />
+    <ClInclude Include="lkControls\lkProgressCtrl.h" />
+    <ClInclude Include="lkControls\lkRecordBar.h" />
+    <ClInclude Include="lkControls\lkRecordChildFrame.h" />
+    <ClInclude Include="lkControls\lkRecordDlg.h" />
+    <ClInclude Include="lkControls\lkStaticImage.h" />
+    <ClInclude Include="lkControls\lkStaticText.h" />
+    <ClInclude Include="lkControls\lkStringObj.h" />
+    <ClInclude Include="lkControls\lkTools.h" />
+    <ClInclude Include="lkControls\lkTransTextCtrl.h" />
+    <ClInclude Include="lkControls\lkView.h" />
+    <ClInclude Include="lkControls\wrapgtk.h" />
+    <ClInclude Include="lkSQLite3\internal_tools.h" />
+    <ClInclude Include="lkSQLite3\internal_Variant.h" />
+    <ClInclude Include="lkSQLite3\lkDateTime.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Common.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Database.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Exception.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Field.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3FieldData.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3FieldDef.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3FindTable.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3IndexDef.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3QuerySet.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3RecordSet.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Statement.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3TableDef.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3TableSet.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3TblFieldInit.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3TempDB.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Validators.h" />
+    <ClInclude Include="lkSQLite3\lkSQL3Verify.h" />
+    <ClInclude Include="lkSQLite3\lkTSqliteMaster.h" />
+    <ClInclude Include="MoviesCatalogs\Backgrounds.h" />
+    <ClInclude Include="MoviesCatalogs\CanvasCtrl.h" />
+    <ClInclude Include="MoviesCatalogs\CategoryBox.h" />
+    <ClInclude Include="MoviesCatalogs\CMovies.h" />
+    <ClInclude Include="MoviesCatalogs\CMovies_validators.h" />
+    <ClInclude Include="MoviesCatalogs\Compact.h" />
+    <ClInclude Include="MoviesCatalogs\CompactEvent.h" />
+    <ClInclude Include="MoviesCatalogs\CompactThread.h" />
+    <ClInclude Include="MoviesCatalogs\CStorage.h" />
+    <ClInclude Include="MoviesCatalogs\DCountry.h" />
+    <ClInclude Include="MoviesCatalogs\Defines.h" />
+    <ClInclude Include="MoviesCatalogs\DGroup.h" />
+    <ClInclude Include="MoviesCatalogs\DGroup_validators.h" />
+    <ClInclude Include="MoviesCatalogs\DlgBaseFilter.h" />
+    <ClInclude Include="MoviesCatalogs\DlgDate.h" />
+    <ClInclude Include="MoviesCatalogs\DlgFilter.h" />
+    <ClInclude Include="MoviesCatalogs\DlgFind.h" />
+    <ClInclude Include="MoviesCatalogs\DlgMoviesFilter.h" />
+    <ClInclude Include="MoviesCatalogs\DlgStorageFilter.h" />
+    <ClInclude Include="MoviesCatalogs\DlgSubCat.h" />
+    <ClInclude Include="MoviesCatalogs\DMovies.h" />
+    <ClInclude Include="MoviesCatalogs\DStorage.h" />
+    <ClInclude Include="MoviesCatalogs\FilterCtrls.h" />
+    <ClInclude Include="MoviesCatalogs\GenresBox.h" />
+    <ClInclude Include="MoviesCatalogs\GroupCtrl.h" />
+    <ClInclude Include="MoviesCatalogs\ImageCtrl.h" />
+    <ClInclude Include="MoviesCatalogs\lkGUIAppTraits.h" />
+    <ClInclude Include="MoviesCatalogs\lkSQL3Image.h" />
+    <ClInclude Include="MoviesCatalogs\lkSQL3Image_Internal.h" />
+    <ClInclude Include="MoviesCatalogs\lkSQL3RecordDialog.h" />
+    <ClInclude Include="MoviesCatalogs\lkSQL3RecordView.h" />
+    <ClInclude Include="MoviesCatalogs\lkSQL3Valid.h" />
+    <ClInclude Include="MoviesCatalogs\main.h" />
+    <ClInclude Include="MoviesCatalogs\MainDocManager.h" />
+    <ClInclude Include="MoviesCatalogs\MainDocument.h" />
+    <ClInclude Include="MoviesCatalogs\MainFrame.h" />
+    <ClInclude Include="MoviesCatalogs\MainView.h" />
+    <ClInclude Include="MoviesCatalogs\MoviesCopy.h" />
+    <ClInclude Include="MoviesCatalogs\QGroup.h" />
+    <ClInclude Include="MoviesCatalogs\QStorage.h" />
+    <ClInclude Include="MoviesCatalogs\resource.h" />
+    <ClInclude Include="MoviesCatalogs\SimpleBox.h" />
+    <ClInclude Include="MoviesCatalogs\SimpleListbox.h" />
+    <ClInclude Include="MoviesCatalogs\TBase.h" />
+    <ClInclude Include="MoviesCatalogs\TCategory.h" />
+    <ClInclude Include="MoviesCatalogs\TCountry.h" />
+    <ClInclude Include="MoviesCatalogs\TGenre.h" />
+    <ClInclude Include="MoviesCatalogs\TGroup.h" />
+    <ClInclude Include="MoviesCatalogs\TJudge.h" />
+    <ClInclude Include="MoviesCatalogs\TLocation.h" />
+    <ClInclude Include="MoviesCatalogs\TMedium.h" />
+    <ClInclude Include="MoviesCatalogs\TMovies.h" />
+    <ClInclude Include="MoviesCatalogs\TMovies_private.h" />
+    <ClInclude Include="MoviesCatalogs\TOrigine.h" />
+    <ClInclude Include="MoviesCatalogs\TQuality.h" />
+    <ClInclude Include="MoviesCatalogs\TRating.h" />
+    <ClInclude Include="MoviesCatalogs\TScreen.h" />
+    <ClInclude Include="MoviesCatalogs\TStorage.h" />
+    <ClInclude Include="MoviesCatalogs\TTemp.h" />
+    <ClInclude Include="MoviesCatalogs\VBase.h" />
+    <ClInclude Include="MoviesCatalogs\VBase_controls.h" />
+    <ClInclude Include="MoviesCatalogs\VBase_private.h" />
+    <ClInclude Include="MoviesCatalogs\VBase_validators.h" />
+    <ClInclude Include="MoviesCatalogs\VCategory.h" />
+    <ClInclude Include="MoviesCatalogs\VCountry.h" />
+    <ClInclude Include="MoviesCatalogs\VCountry_private.h" />
+    <ClInclude Include="MoviesCatalogs\VGenre.h" />
+    <ClInclude Include="MoviesCatalogs\VJudge.h" />
+    <ClInclude Include="MoviesCatalogs\VLocation.h" />
+    <ClInclude Include="MoviesCatalogs\VMedium.h" />
+    <ClInclude Include="MoviesCatalogs\VMovies.h" />
+    <ClInclude Include="MoviesCatalogs\VMovies_private.h" />
+    <ClInclude Include="MoviesCatalogs\VOrigine.h" />
+    <ClInclude Include="MoviesCatalogs\VQuality.h" />
+    <ClInclude Include="MoviesCatalogs\VRating.h" />
+    <ClInclude Include="MoviesCatalogs\VScreen.h" />
+    <ClInclude Include="MoviesCatalogs\VStorage.h" />
+    <ClInclude Include="MoviesCatalogs\XPMs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lkControls\lkBoxInit.cpp" />
+    <ClCompile Include="lkControls\lkCanvas.cpp" />
+    <ClCompile Include="lkControls\lkChkImgListbox.cpp" />
+    <ClCompile Include="lkControls\lkClientData.cpp" />
+    <ClCompile Include="lkControls\lkColour.cpp" />
+    <ClCompile Include="lkControls\lkConfigTools.cpp" />
+    <ClCompile Include="lkControls\lkCtrlData.cpp" />
+    <ClCompile Include="lkControls\lkDialog.cpp" />
+    <ClCompile Include="lkControls\lkDialogEx.cpp" />
+    <ClCompile Include="lkControls\lkDocument.cpp" />
+    <ClCompile Include="lkControls\lkFileConfig.cpp" />
+    <ClCompile Include="lkControls\lkFileConfig_private.cpp" />
+    <ClCompile Include="lkControls\lkFileCtrl.cpp" />
+    <ClCompile Include="lkControls\lkHyperlinkCtrl.cpp" />
+    <ClCompile Include="lkControls\lkHyperlinkCtrl_private.cpp" />
+    <ClCompile Include="lkControls\lkImageBox.cpp" />
+    <ClCompile Include="lkControls\lkImageList.cpp" />
+    <ClCompile Include="lkControls\lkImgComboBox.cpp" />
+    <ClCompile Include="lkControls\lkItemContainer.cpp" />
+    <ClCompile Include="lkControls\lkOpenImageDlg.cpp" />
+    <ClCompile Include="lkControls\lkProgressCtrl.cpp" />
+    <ClCompile Include="lkControls\lkRecordBar.cpp" />
+    <ClCompile Include="lkControls\lkRecordChildFrame.cpp" />
+    <ClCompile Include="lkControls\lkRecordDlg.cpp" />
+    <ClCompile Include="lkControls\lkStaticImage.cpp" />
+    <ClCompile Include="lkControls\lkStaticText.cpp" />
+    <ClCompile Include="lkControls\lkStringObj.cpp" />
+    <ClCompile Include="lkControls\lkTools.cpp" />
+    <ClCompile Include="lkControls\lkTransTextCtrl.cpp" />
+    <ClCompile Include="lkControls\lkView.cpp" />
+    <ClCompile Include="lkSQLite3\internal_tools.cpp" />
+    <ClCompile Include="lkSQLite3\internal_Variant.cpp" />
+    <ClCompile Include="lkSQLite3\lkDateTime.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Common.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Database.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Exception.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Field.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3FieldData.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3FieldDef.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3FindTable.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3IndexDef.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3QuerySet.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3RecordSet.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Statement.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3TableDef.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3TableSet.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3TblFieldInit.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3TempDB.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Validators.cpp" />
+    <ClCompile Include="lkSQLite3\lkSQL3Verify.cpp" />
+    <ClCompile Include="lkSQLite3\lkTSqliteMaster.cpp" />
+    <ClCompile Include="MoviesCatalogs\Backgrounds.cpp" />
+    <ClCompile Include="MoviesCatalogs\CanvasCtrl.cpp" />
+    <ClCompile Include="MoviesCatalogs\CategoryBox.cpp" />
+    <ClCompile Include="MoviesCatalogs\CMovies.cpp" />
+    <ClCompile Include="MoviesCatalogs\CMovies_validators.cpp" />
+    <ClCompile Include="MoviesCatalogs\Compact.cpp" />
+    <ClCompile Include="MoviesCatalogs\CompactEvent.cpp" />
+    <ClCompile Include="MoviesCatalogs\CompactThread.cpp" />
+    <ClCompile Include="MoviesCatalogs\CStorage.cpp" />
+    <ClCompile Include="MoviesCatalogs\DCountry.cpp" />
+    <ClCompile Include="MoviesCatalogs\DGroup.cpp" />
+    <ClCompile Include="MoviesCatalogs\DGroup_validators.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgBaseFilter.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgDate.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgFilter.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgFind.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgMoviesFilter.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgStorageFilter.cpp" />
+    <ClCompile Include="MoviesCatalogs\DlgSubCat.cpp" />
+    <ClCompile Include="MoviesCatalogs\DMovies.cpp" />
+    <ClCompile Include="MoviesCatalogs\DStorage.cpp" />
+    <ClCompile Include="MoviesCatalogs\FilterCtrls.cpp" />
+    <ClCompile Include="MoviesCatalogs\GenresBox.cpp" />
+    <ClCompile Include="MoviesCatalogs\GroupCtrl.cpp" />
+    <ClCompile Include="MoviesCatalogs\ImageCtrl.cpp" />
+    <ClCompile Include="MoviesCatalogs\lkGUIAppTraits.cpp" />
+    <ClCompile Include="MoviesCatalogs\lkSQL3Image.cpp" />
+    <ClCompile Include="MoviesCatalogs\lkSQL3Image_Internal.cpp" />
+    <ClCompile Include="MoviesCatalogs\lkSQL3RecordDialog.cpp" />
+    <ClCompile Include="MoviesCatalogs\lkSQL3RecordView.cpp" />
+    <ClCompile Include="MoviesCatalogs\lkSQL3Valid.cpp" />
+    <ClCompile Include="MoviesCatalogs\main.cpp" />
+    <ClCompile Include="MoviesCatalogs\MainDocManager.cpp" />
+    <ClCompile Include="MoviesCatalogs\MainDocument.cpp" />
+    <ClCompile Include="MoviesCatalogs\MainFrame.cpp" />
+    <ClCompile Include="MoviesCatalogs\MainView.cpp" />
+    <ClCompile Include="MoviesCatalogs\MoviesCopy.cpp" />
+    <ClCompile Include="MoviesCatalogs\QGroup.cpp" />
+    <ClCompile Include="MoviesCatalogs\QStorage.cpp" />
+    <ClCompile Include="MoviesCatalogs\SimpleBox.cpp" />
+    <ClCompile Include="MoviesCatalogs\SimpleListbox.cpp" />
+    <ClCompile Include="MoviesCatalogs\TBase.cpp" />
+    <ClCompile Include="MoviesCatalogs\TCategory.cpp" />
+    <ClCompile Include="MoviesCatalogs\TCountry.cpp" />
+    <ClCompile Include="MoviesCatalogs\TGenre.cpp" />
+    <ClCompile Include="MoviesCatalogs\TGroup.cpp" />
+    <ClCompile Include="MoviesCatalogs\TJudge.cpp" />
+    <ClCompile Include="MoviesCatalogs\TLocation.cpp" />
+    <ClCompile Include="MoviesCatalogs\TMedium.cpp" />
+    <ClCompile Include="MoviesCatalogs\TMovies.cpp" />
+    <ClCompile Include="MoviesCatalogs\TMovies_private.cpp" />
+    <ClCompile Include="MoviesCatalogs\TOrigine.cpp" />
+    <ClCompile Include="MoviesCatalogs\TQuality.cpp" />
+    <ClCompile Include="MoviesCatalogs\TRating.cpp" />
+    <ClCompile Include="MoviesCatalogs\TScreen.cpp" />
+    <ClCompile Include="MoviesCatalogs\TStorage.cpp" />
+    <ClCompile Include="MoviesCatalogs\TTemp.cpp" />
+    <ClCompile Include="MoviesCatalogs\VBase.cpp" />
+    <ClCompile Include="MoviesCatalogs\VBase_controls.cpp" />
+    <ClCompile Include="MoviesCatalogs\VBase_private.cpp" />
+    <ClCompile Include="MoviesCatalogs\VBase_validators.cpp" />
+    <ClCompile Include="MoviesCatalogs\VCategory.cpp" />
+    <ClCompile Include="MoviesCatalogs\VCountry.cpp" />
+    <ClCompile Include="MoviesCatalogs\VCountry_private.cpp" />
+    <ClCompile Include="MoviesCatalogs\VGenre.cpp" />
+    <ClCompile Include="MoviesCatalogs\VJudge.cpp" />
+    <ClCompile Include="MoviesCatalogs\VLocation.cpp" />
+    <ClCompile Include="MoviesCatalogs\VMedium.cpp" />
+    <ClCompile Include="MoviesCatalogs\VMovies.cpp" />
+    <ClCompile Include="MoviesCatalogs\VMovies_private.cpp" />
+    <ClCompile Include="MoviesCatalogs\VOrigine.cpp" />
+    <ClCompile Include="MoviesCatalogs\VQuality.cpp" />
+    <ClCompile Include="MoviesCatalogs\VRating.cpp" />
+    <ClCompile Include="MoviesCatalogs\VScreen.cpp" />
+    <ClCompile Include="MoviesCatalogs\VStorage.cpp" />
+    <ClCompile Include="MoviesCatalogs\XPMs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MoviesCatalogs\MoviesCatalog.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MoviesCatalogs\bitmaps\MoviesCatalog.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\cdrom.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\colours.bmp" />
+    <Image Include="MoviesCatalogs\wx\msw\computer.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\csquery.bmp" />
+    <Image Include="MoviesCatalogs\wx\msw\drive.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\file1.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\floppy.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\folder1.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\folder2.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\removble.ico" />
+    <Image Include="MoviesCatalogs\wx\msw\std.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

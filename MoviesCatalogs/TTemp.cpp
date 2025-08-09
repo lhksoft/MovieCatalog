@@ -143,7 +143,7 @@ wxUint64 TTemp::FindNewID(lkSQL3Database* _DB, const wxString& sTable, wxUint64 
 		if ( (int)_DB->ExecuteSQLAndGet(qry) > 0 )
 			nRet = (wxUint64)_DB->ExecuteSQLAndGet(sql).GetInt();
 	}
-	catch ( const lkSQL3Exception& e )
+	catch ( const lkSQL3Exception& )
 	{
 		nRet = 0;
 		throw;

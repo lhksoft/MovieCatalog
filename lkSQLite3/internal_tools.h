@@ -20,6 +20,7 @@ wxString lkTrimRight(const wxString& str, const wxString& trim);
 wxString lkTrimLeft(const wxString& str, const wxString& trim);
 wxString lkTrim(const wxString& str, const wxString& trim);
 
+wxString lkCharChanger(const wxString& src, const wxString& findOneOf, const wxString& replaceBy);
 wxString lkMakeAnsi(const wxString& src);
 
 #endif // !__INTERNAL_TOOLS_H__

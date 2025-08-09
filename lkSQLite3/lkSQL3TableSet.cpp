@@ -142,8 +142,8 @@ bool lkSQL3TableSet::InitColumns(lkSQL3TblInit& init, const sqlTblDef_t& def, co
 
 //	InitColumns(_tblName);
 
-	lkSQL3FieldData* fld;
-	lkSQL3TblFieldInit* finit;
+	lkSQL3FieldData* fld=NULL;
+	lkSQL3TblFieldInit* finit=NULL;
 	for ( Iter = pFldsDef->begin(); Iter != pFldsDef->end(); Iter++ )
 	{
 		if ( bRet = (((fld = m_Col.GetField((*Iter)->GetName())) != NULL) &&

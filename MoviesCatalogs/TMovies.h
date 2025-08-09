@@ -23,6 +23,9 @@
 #include "../lkSQLite3/lkDateTime.h"
 #include <wx/thread.h>
 
+#define conf_MOVIES_PATH				wxT("Movies")
+#define conf_MOVIES_COVERS				wxT("Covers")
+ 
 //////////////////////////////////////////////////////////////////////////////
 // TMovies
 //////////////////////////////////////////////////////////////////////////////
@@ -151,6 +154,8 @@ public:
 	static bool					HasJudge(lkSQL3Database*, wxUint32);
 
 	static bool					Compact(wxThread*, lkSQL3Database* dbSrc, lkSQL3Database* dbDest, lkSQL3Database* dbTmp); // wxThread required for sending messages to main-thread
+	static bool					RewriteCovers(wxThread*, lkSQL3Database* dbSrc); // true if successfull, or if nothing to do (like '[Compact]NewCovers' not set in ini-file
+																				 // false on error, or '[Compact]OldCovers' was set but '[Compact]NewCovers' not, in ini-file
 
 private:
 	wxDECLARE_DYNAMIC_CLASS_NO_COPY(TMovies);

@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\lkControls">
+      <UniqueIdentifier>{8d5f00af-eff6-4373-8852-868ef5ebafb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lkControls">
+      <UniqueIdentifier>{30b947b9-51b7-4c4f-8f49-dbd14d27c344}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lkSQLite3">
+      <UniqueIdentifier>{24d271b4-6878-4864-b77f-1178e64a9526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lkSQLite3">
+      <UniqueIdentifier>{390cd06b-3220-4d95-b14e-7d285153e9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MoviesCatalogs">
+      <UniqueIdentifier>{02bf99d7-2d47-4fc7-8cd8-18286c44d988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MoviesCatalogs">
+      <UniqueIdentifier>{5c752816-2dd2-4802-8ea5-88abd24e123a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lkControls\Form.xpms" />
+    <None Include="lkControls\lkRecordButtons.xpms" />
+    <None Include="lkControls\rec_navigation.xpms" />
+    <None Include="lkControls\rec_operation.xpms" />
+    <None Include="MoviesCatalogs\wx\msw\hand.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\bullseye.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\pencil.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\magnif1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\roller.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\pbrush.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\pntleft.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\pntright.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\blank.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MoviesCatalogs\wx\msw\cross.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lkControls\gtk2-compat.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkBoxInit.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkCanvas.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkChkImgListbox.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkClientData.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkColour.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkConfigTools.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkCtrlData.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkDialog.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkDialogEx.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkDocument.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkFileConfig.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkFileConfig_private.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkFileCtrl.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkHyperlinkCtrl.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkHyperlinkCtrl_private.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkImageBox.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkImageList.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkImgComboBox.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkItemContainer.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkOpenImageDlg.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkProgressCtrl.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkRecordBar.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkRecordChildFrame.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkRecordDlg.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkStaticImage.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkStaticText.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkStringObj.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkTools.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkTransTextCtrl.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\lkView.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkControls\wrapgtk.h">
+      <Filter>Header Files\lkControls</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\internal_tools.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\internal_Variant.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkDateTime.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Common.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Database.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Exception.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Field.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3FieldData.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3FieldDef.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3FindTable.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3IndexDef.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3QuerySet.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3RecordSet.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Statement.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3TableDef.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3TableSet.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3TblFieldInit.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3TempDB.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Validators.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkSQL3Verify.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="lkSQLite3\lkTSqliteMaster.h">
+      <Filter>Header Files\lkSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\Backgrounds.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CanvasCtrl.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CategoryBox.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CMovies.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CMovies_validators.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\Compact.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CompactEvent.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CompactThread.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\CStorage.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DCountry.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\Defines.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DGroup.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DGroup_validators.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgBaseFilter.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgDate.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgFilter.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgFind.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgMoviesFilter.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgStorageFilter.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DlgSubCat.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DMovies.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\DStorage.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\FilterCtrls.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\GenresBox.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\GroupCtrl.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\ImageCtrl.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\lkGUIAppTraits.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\lkSQL3Image.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\lkSQL3Image_Internal.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\lkSQL3RecordDialog.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\lkSQL3RecordView.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\lkSQL3Valid.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\main.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\MainDocManager.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\MainDocument.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\MainFrame.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\MainView.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\MoviesCopy.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\QGroup.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\QStorage.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\SimpleBox.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\SimpleListbox.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TBase.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TCategory.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TCountry.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TGenre.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TGroup.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TJudge.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TLocation.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TMedium.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TMovies.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TOrigine.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TQuality.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TRating.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TScreen.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TStorage.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TTemp.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VBase.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VBase_controls.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VBase_private.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VBase_validators.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VCategory.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VCountry.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VCountry_private.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VGenre.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VJudge.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VLocation.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VMedium.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VMovies.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VMovies_private.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VOrigine.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VQuality.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VRating.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VScreen.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\VStorage.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\XPMs.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoviesCatalogs\TMovies_private.h">
+      <Filter>Header Files\MoviesCatalogs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lkControls\lkBoxInit.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkCanvas.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkChkImgListbox.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkClientData.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkColour.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkConfigTools.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkCtrlData.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkDialog.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkDialogEx.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkDocument.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkFileConfig.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkFileConfig_private.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkFileCtrl.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkHyperlinkCtrl.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkHyperlinkCtrl_private.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkImageBox.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkImageList.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkImgComboBox.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkItemContainer.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkOpenImageDlg.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkProgressCtrl.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkRecordBar.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkRecordChildFrame.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkRecordDlg.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkStaticImage.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkStaticText.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkStringObj.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkTools.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkTransTextCtrl.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkControls\lkView.cpp">
+      <Filter>Source Files\lkControls</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\internal_tools.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\internal_Variant.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkDateTime.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Common.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Database.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Exception.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Field.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3FieldData.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3FieldDef.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3FindTable.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3IndexDef.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3QuerySet.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3RecordSet.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Statement.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3TableDef.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3TableSet.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3TblFieldInit.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3TempDB.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Validators.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkSQL3Verify.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="lkSQLite3\lkTSqliteMaster.cpp">
+      <Filter>Source Files\lkSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\Backgrounds.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CanvasCtrl.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CategoryBox.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CMovies.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CMovies_validators.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\Compact.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CompactEvent.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CompactThread.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\CStorage.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DCountry.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DGroup.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DGroup_validators.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgBaseFilter.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgDate.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgFilter.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgFind.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgMoviesFilter.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgStorageFilter.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DlgSubCat.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DMovies.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\DStorage.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\FilterCtrls.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\GenresBox.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\GroupCtrl.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\ImageCtrl.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\lkGUIAppTraits.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\lkSQL3Image.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\lkSQL3Image_Internal.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\lkSQL3RecordDialog.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\lkSQL3RecordView.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\lkSQL3Valid.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\main.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\MainDocManager.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\MainDocument.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\MainFrame.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\MainView.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\MoviesCopy.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\QGroup.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\QStorage.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\SimpleBox.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\SimpleListbox.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TBase.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TCategory.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TCountry.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TGenre.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TGroup.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TJudge.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TLocation.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TMedium.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TMovies.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TOrigine.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TQuality.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TRating.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TScreen.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TStorage.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TTemp.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VBase.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VBase_controls.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VBase_private.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VBase_validators.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VCategory.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VCountry.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VCountry_private.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VGenre.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VJudge.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VLocation.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VMedium.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VMovies.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VMovies_private.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VOrigine.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VQuality.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VRating.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VScreen.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\VStorage.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\XPMs.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+    <ClCompile Include="MoviesCatalogs\TMovies_private.cpp">
+      <Filter>Source Files\MoviesCatalogs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MoviesCatalogs\MoviesCatalog.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MoviesCatalogs\wx\msw\std.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\folder1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\folder2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\file1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\computer.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\drive.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\cdrom.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\floppy.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\removble.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\bitmaps\MoviesCatalog.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\csquery.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MoviesCatalogs\wx\msw\colours.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

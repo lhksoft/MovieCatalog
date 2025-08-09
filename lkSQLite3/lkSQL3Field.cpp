@@ -9,6 +9,10 @@
 #endif // !_CRT_SECURE_NO_WARNINGS
 #include "lkSQL3Field.h"
 #include "lkSQL3Exception.h"
+
+#ifdef __WXMSW__
+#define SQLITE_API __declspec(dllimport)
+#endif // __WXMSW__
 #include <sqlite3.h>
 
 

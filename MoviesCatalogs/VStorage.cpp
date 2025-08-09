@@ -389,7 +389,7 @@ bool StorageView::OnCreate(wxDocument* doc, long flags)
 
 		wxSize size =
 #ifdef __WXMSW__
-			wxSize(531, 209)
+			wxSize(531, 219)
 #else
 			wxSize(541, 245)
 #endif
@@ -400,7 +400,7 @@ bool StorageView::OnCreate(wxDocument* doc, long flags)
 
 		size =
 #ifdef __WXMSW__
-			wxSize(515, 121)
+			wxSize(515, 125)
 #else
 			wxSize(541,149)
 #endif

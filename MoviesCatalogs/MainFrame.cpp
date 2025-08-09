@@ -128,9 +128,11 @@ void MainFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 {
 	wxAboutDialogInfo info;
 	info.SetName("Movies Catalog");
-	info.SetVersion("3.0.0.0", "3.0.0.0 product version 7.0.0.0");
-	info.SetDescription("Movies Catalog Program using wxWidgets and SQLite3");
-	info.SetCopyright("CopyLeft � 2015-'16,2019,2021-'22 by LhK-Soft, Laurens H. Koehoorn");
+	info.SetVersion("3.0.1.0", "3.0.1.0 product version 7.1.0.0");
+	info.SetDescription("Movies Catalog Program using wxWidgets 3.2.4 and SQLite3");
+	wxString s;
+	s.Printf("CopyLeft %c 2015 - '16,2019,2021-'22, 2025 by LhK-Soft, Laurens H.Koehoorn", wxUniChar(0x00A9));
+	info.SetCopyright(s);
 	info.AddDeveloper("Laurens Koehoorn");
 	info.SetIcon(Get_MoviesCatalog_Ico());
 

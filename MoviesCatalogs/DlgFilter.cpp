@@ -968,7 +968,7 @@ wxString DlgFilter::GetOrder() const
 		if ( m_eSortBy == Sorting::Storage )
 			order.Printf(wxT("[%s].[%s]%s"), t3Storage, t3Storage_NAME, s);
 		else // if (m_eSortBy == Sorting::Movies )
-			order.Printf(wxT("[%s].[%s]%s, [%s].[%s]%s"), t3Movies, t3Movies_EPISODE, s, t3Movies, t3Movies_TITLE, s);
+			order.Printf(wxT("[%s].[%s] COLLATE lkUTF8compare%s, [%s].[%s]%s"), t3Movies, t3Movies_TITLE, s, t3Movies, t3Movies_EPISODE, s);
 	}
 
 	return order;

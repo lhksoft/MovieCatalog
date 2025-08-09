@@ -7,9 +7,16 @@
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #endif // !_CRT_SECURE_NO_WARNINGS
+
+#ifdef __WXMSW__
+#define SQLITE_API __declspec(dllimport)
+#endif // __WXMSW__
 #include <sqlite3.h>
+
 #include "lkSQL3Common.h"
 #include "internal_tools.h"
+
+#include <wx/arrstr.h>
 
 typedef struct FldTypes
 {
@@ -70,7 +77,8 @@ int lkUTF8_sqlite3_SORT_nlcs(void* arg, int l1, const void* s1, int l2, const vo
 		ss1 = lkMakeAnsi(wxString::FromUTF8((const char*)s1, (size_t)l1));
 		ss2 = lkMakeAnsi(wxString::FromUTF8((const char*)s2, (size_t)l2));
 
-		n = ss1.CmpNoCase(ss2);
+//		n = ss1.CmpNoCase(ss2);
+		n = wxCmpNaturalGeneric(ss1, ss2);
 	}
 
 	return n;

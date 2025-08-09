@@ -72,6 +72,8 @@ PRIVATE
     TMedium.h
     TMovies.cpp
     TMovies.h
+    TMovies_private.cpp
+    TMovies_private.h
     TOrigine.cpp
     TOrigine.h
     TQuality.cpp
