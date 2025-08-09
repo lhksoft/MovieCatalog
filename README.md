@@ -51,7 +51,7 @@ MSW :
 - \> Unpack into 'basefolder-of-MoviesCatalog'\wx324\lib\Release
 - Now copy the *.dll and *.pdb from 'basefolder-of-MoviesCatalog'\wx324\lib\vc14x_x64_dll into (create if not yet existing) 'basefolder-of-MoviesCatalog'\X64\Debug
 - also copy the *.dll from 'basefolder-of-MoviesCatalog'\wx324\lib\Release  into (create if not yet existing) 'basefolder-of-MoviesCatalog'\X64\Release
-* For sqlite3
+* For sqlite3 :
 - Download https://sqlite.org/2025/sqlite-amalgamation-3500400.zip
 - \> Unpack only the HEADERS to e.g. C:\sqlite
 - Download https://sqlite.org/2025/sqlite-dll-win-x64-3500400.zip
@@ -60,7 +60,7 @@ MSW :
 - \> goto same path as previous, e.g. C:\sqlite
 - \> run : lib /def:sqlite3.def /machine:X64
 -   \> this will create a .lib file to include in MSVS project
-- In the <basefolder-of-MoviesCatalog> create "sqlite3"
+- In the 'basefolder-of-MoviesCatalog' create "sqlite3"
 - \> create following dirs inside that folder ('basefolder-of-MoviesCatalog'\sqlite3) : bin, include, lib
 - From the tempory path (e.g. C:\sqlite) copy following :
 - \> the .dll into sqlite3\bin
