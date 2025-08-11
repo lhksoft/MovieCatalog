@@ -1,4 +1,4 @@
-﻿# CMakeList.txt : Top-level CMake project file, do global configuration
+# CMakeList.txt : Top-level CMake project file, do global configuration
 # and include sub-projects here.
 #
 # based at <https://iamsorush.com/posts/cpp-cmake-build/>
@@ -8,7 +8,7 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 project("MovieCatalog"
 	DESCRIPTION "Movies Catalog using wxWidgets-3.2.4 and SQLite3"
-	VERSION 3.0.1.0
+	VERSION 3.0.1.5
 	LANGUAGES CXX
 )
 
@@ -55,4 +55,5 @@ else()
 	target_link_libraries(${PROJECT_NAME} PRIVATE ${wxWidgets_LIBRARIES} ${SQLite3_LIBRARIES})
 endif()
 
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})

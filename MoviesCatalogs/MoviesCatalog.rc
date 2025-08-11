@@ -6,7 +6,7 @@
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 3,0,1,0
+ FILEVERSION 3,0,1,5
  PRODUCTVERSION 7,1,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -24,7 +24,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "LhK-Soft"
             VALUE "FileDescription", "MoviesCatalog x64 Unicode Application"
-            VALUE "FileVersion", "3.0.1.0"
+            VALUE "FileVersion", "3.0.1.5"
             VALUE "InternalName", "MoviesCatalog.exe"
             VALUE "LegalCopyright", "CopyLeft © 2015-'16,2019,2021-'22,2025 by LhK-Soft, Laurens H. Koehoorn"
             VALUE "OriginalFilename", "MoviesCatalog.exe"

@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 #include "lkDialog.h"
+#include <wx/log.h>
 #include <wx/msgdlg.h>
 
 #if defined(__UNIX__)
@@ -62,13 +63,14 @@ bool lkDialog::Create(wxWindow* parent, const wxImage& background, wxWindowID id
 
 void lkDialog::OnRightClick(wxMouseEvent& event)
 {
-#ifdef __WXDEBUG__
-	wxSize sizeC = GetClientSize();
-	wxSize sizeF = GetSize();
-	wxString s = s.Format(wxT("Frame Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
-	wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
-#else
-	event.Skip();
-#endif // WXDEBUG
+	if (wxLog::GetLogLevel() == wxLOG_Debug)
+	{
+		wxSize sizeC = GetClientSize();
+		wxSize sizeF = GetSize();
+		wxString s = s.Format(wxT("Frame Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
+		wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
+	}
+	else
+		event.Skip();
 }
 

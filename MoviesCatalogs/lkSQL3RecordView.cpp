@@ -26,6 +26,7 @@
 #include <wx/msgdlg.h>
 
 #include "../lkControls/lkConfigTools.h"
+#include <wx/log.h>
 
 wxDEFINE_EVENT(lkEVT_SQL3MOVE, lkSQL3MoveEvent);
 
@@ -563,22 +564,22 @@ lkSQL3RecordView* lkSQL3panel::GetView()
 
 void lkSQL3panel::OnRightClick(wxMouseEvent& event)
 {
-#ifdef __WXDEBUG__
-	lkSQL3RecordView* v = GetView();
-	if ( v ) v->SetCanClose(false);
-	wxWindowDisabler wd(true);
+	if (wxLog::GetLogLevel() == wxLOG_Debug)
+	{
+		lkSQL3RecordView* v = GetView();
+		if (v) v->SetCanClose(false);
+		wxWindowDisabler wd(true);
 
-	wxSize sizeC = GetClientSize();
-	wxSize sizeF = GetParent()->GetSize();
-	wxString s; s.Printf(wxT("Frame Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
-	wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
+		wxSize sizeC = GetClientSize();
+		wxSize sizeF = GetParent()->GetSize();
+		wxString s; s.Printf(wxT("Frame Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
+		wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
 
-	if ( v ) v->SetCanClose(true);
-#else
-	event.Skip();
-#endif // WXDEBUG
+		if (v) v->SetCanClose(true);
+	}
+	else
+		event.Skip();
 }
-
 
 // ////////////////////////////////////////////////////////////////////
 // class lkSQL3RecordView

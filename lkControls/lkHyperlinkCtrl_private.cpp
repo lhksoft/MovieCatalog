@@ -21,9 +21,8 @@
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 #include <wx/valtext.h>
-#ifdef __WXDEBUG__
-# include <wx/msgdlg.h>
-#endif // __WXDEBUG__
+#include <wx/log.h>
+#include <wx/msgdlg.h>
 #include "lkColour.h"
 
 
@@ -52,6 +51,7 @@ bool lkHyperlinkDialog::Create(wxWindow* pParent)
 	SetBackgroundColour(MAKE_RGB(255, 233, 129)); // light-orange
 	SetForegroundColour(MAKE_RGB(182, 0, 111)); // dark-magenta
 
+	wxWindow* w = NULL;
 	wxBoxSizer* szMain = new wxBoxSizer(wxVERTICAL);
 	{
 		wxBoxSizer* szHor = new wxBoxSizer(wxHORIZONTAL);
@@ -60,6 +60,7 @@ bool lkHyperlinkDialog::Create(wxWindow* pParent)
 		szHor->Add(new wxStaticText(this, wxID_ANY, wxT("Display :"), wxDefaultPosition, wxSize(65, -1), wxALIGN_RIGHT), 0, wxALIGN_CENTER_VERTICAL | wxFIXED_MINSIZE | wxRIGHT | wxBOTTOM, 5);
 		szHor->Add(t = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_LEFT, wxTextValidator(wxFILTER_NONE, &m_UriLabel)), 1, wxEXPAND | wxBOTTOM, 5);
 		t->SetForegroundColour(lkCol_DarkBlue);
+		w = t;
 
 		szMain->Add(szHor, 0, wxLEFT | wxTOP | wxRIGHT | wxEXPAND, 10);
 	}
@@ -85,6 +86,8 @@ bool lkHyperlinkDialog::Create(wxWindow* pParent)
 	Layout();
 
 	TransferDataToWindow();
+	if (w) w->SetFocus();
+
 	return true;
 }
 
@@ -110,11 +113,12 @@ void lkHyperlinkDialog::SetUriLabel(const wxString& l)
 
 void lkHyperlinkDialog::OnRightClick(wxMouseEvent& event)
 {
-#ifdef __WXDEBUG__
-	wxSize size = GetSize();
-	wxString s = s.Format(wxT("width = %d\nheight = %d"), size.GetWidth(), size.GetHeight());
-	wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
-#endif // WXDEBUG
+	if (wxLog::GetLogLevel() == wxLOG_Debug)
+	{
+		wxSize size = GetSize();
+		wxString s = s.Format(wxT("width = %d\nheight = %d"), size.GetWidth(), size.GetHeight());
+		wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
+	}
 }
 
 

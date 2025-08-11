@@ -25,6 +25,7 @@
 #include <wx/valtext.h>
 #include <wx/valgen.h>
 
+#include <wx/log.h>
 #include <wx/msgdlg.h>
 #include <wx/listimpl.cpp>
 
@@ -264,14 +265,15 @@ void DlgFind::OnInitDialog(wxInitDialogEvent& event)
 
 void DlgFind::OnRightClick(wxMouseEvent& event)
 {
-#ifdef __WXDEBUG__
-	wxSize sizeC = GetClientSize();
-	wxSize sizeF = GetSize();
-	wxString s; s.Printf(wxT("Frame Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
-	wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
-#else
-	event.Skip();
-#endif // WXDEBUG
+	if (wxLog::GetLogLevel() == wxLOG_Debug)
+	{
+		wxSize sizeC = GetClientSize();
+		wxSize sizeF = GetSize();
+		wxString s; s.Printf(wxT("Frame Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
+		wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
+	}
+	else
+		event.Skip();
 }
 
 void DlgFind::OnButton(wxCommandEvent& event)

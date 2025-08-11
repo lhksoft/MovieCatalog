@@ -26,6 +26,7 @@
 ****************************************************************************************/
 #include "main.h"
 #include <wx/config.h>
+#include <wx/log.h>
 #include "lkGUIAppTraits.h"
 
 #include "MainDocManager.h"
@@ -59,7 +60,7 @@
 * Macro definitions
 ****************************************************************************************/
 /* Macro which creates the application instance and starts it. */
-IMPLEMENT_APP(MyApp)
+wxIMPLEMENT_APP(MyApp);
 
 /************************************************************************************//**
 ** \brief     Called upon application initialization. 
@@ -71,6 +72,13 @@ IMPLEMENT_APP(MyApp)
 MyApp::MyApp() : wxApp()
 {
     m_pCanvas = NULL;
+
+#ifdef NDEBUG
+	// Seems that __WX_DEBUG__ always is set, even in Release-builds. As long I've got no solution for that, I do it like this
+	wxLog::SetLogLevel(wxLOG_Info);
+#else
+	wxLog::SetLogLevel(wxLOG_Debug);
+#endif // NDEBUG
 }
 
 wxAppTraits* MyApp::CreateTraits()

@@ -1,8 +1,15 @@
 # MovieCatalog
 A program to catalog a private collection of movies inside a SQLite3 database using wxWidgets.
-This program compiles and builds in MSVC (win32) and in linux(-mint)
+This program compiles and builds in MSVC (win32) and in linux(-mint).
 
-Updates in 3.0.1.0 :
+
+
+**Updates in 3.0.1.5 :**
+- It seems __WX_DEBUG__ is allways set, even if in Release mode, so I had to figure out some hack to have some debug-messages to hide in Release-build, but not when in Debug build.
+- When opening the dialog in MoviesView to edit the URL, there was a hidden focus onto the OK button (which you won't see if the dialog is launched). I fixed this by forcing a setfocus on the first edit-control.
+- I installed Ghostwriter (flatpack) to edit this readme.md file.
+
+**Updates in 3.0.1.0 :**
 - OpenImgDialog will open current image (if any) already in preview
 - Covers inside TMovies will be prefixed by a prefix-path (if set) in '[Movies]Covers' in the INI
 - Programmaticly possible to resort the covers on the local disk by setting [Compact]NewCovers and (if "[Movies]Covers" not set) setting [Compact]OldCovers.
@@ -33,38 +40,41 @@ LINUX :
 - requires 'libgtk-3-dev'         (sudo apt update & sudo apt install libgtk-3-dev)
 
 How to build (with CMake)
-# Configure a release build
-- cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Release
-# Build release binaries
+## Configure a release build
+- cmake -S . -B build/ -DCMAKE_BUILD_TYPE=Release
+## Build release binaries
 - cmake --build build/
-# Install locally in HOME dir
+## Install locally in HOME dir
 - cmake --install . --prefix ~/bin
-- \> but apparently this seems not to work well, so better copy the binary from the .\build directory and copy it to where you desire
+- > but apparently this seems not to work well, so better copy the binary from the .\build directory and copy it to where you desire
 
 
 MSW :
 * For wxWidgets :
 - Download https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.4/wxMSW-3.2.4_vc14x_x64_Dev.7z
 - Download https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.4/wxWidgets-3.2.4-headers.7z
-- \> Unpack into 'basefolder-of-MoviesCatalog'\wx324
+- -> Unpack into 'basefolder-of-MoviesCatalog'\wx324
 - Download https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.4/wxMSW-3.2.4_vc14x_x64_ReleaseDLL.7z
-- \> Unpack into 'basefolder-of-MoviesCatalog'\wx324\lib\Release
+- -> Unpack into 'basefolder-of-MoviesCatalog'\wx324\lib\Release
 - Now copy the *.dll and *.pdb from 'basefolder-of-MoviesCatalog'\wx324\lib\vc14x_x64_dll into (create if not yet existing) 'basefolder-of-MoviesCatalog'\X64\Debug
 - also copy the *.dll from 'basefolder-of-MoviesCatalog'\wx324\lib\Release  into (create if not yet existing) 'basefolder-of-MoviesCatalog'\X64\Release
 * For sqlite3 :
 - Download https://sqlite.org/2025/sqlite-amalgamation-3500400.zip
-- \> Unpack only the HEADERS to e.g. C:\sqlite
+- -> Unpack only the HEADERS to e.g. C:\sqlite
 - Download https://sqlite.org/2025/sqlite-dll-win-x64-3500400.zip
-- \> Unpack to same path as previous, e.g. C:\sqlite
+- -> Unpack to same path as previous, e.g. C:\sqlite
 - Start 'Developper Command Prompt' from "Start|Visual Studio 2022|Developper Command Prompt for VS 2022"
-- \> goto same path as previous, e.g. C:\sqlite
-- \> run : lib /def:sqlite3.def /machine:X64
--   \> this will create a .lib file to include in MSVS project
+- -> goto same path as previous, e.g. C:\sqlite
+- -> run : lib /def:sqlite3.def /machine:X64
+-   -> this will create a .lib file to include in MSVS project
 - In the 'basefolder-of-MoviesCatalog' create "sqlite3"
-- \> create following dirs inside that folder ('basefolder-of-MoviesCatalog'\sqlite3) : bin, include, lib
+- -> create following dirs inside that folder ('basefolder-of-MoviesCatalog'\sqlite3) : bin, include, lib
 - From the tempory path (e.g. C:\sqlite) copy following :
-- \> the .dll into sqlite3\bin
-- \> all .h   into sqlite3\include
-- \> the .lib (and if available also the .exp) into sqlite3\lib
+- -> the .dll into sqlite3\bin
+- -> all .h   into sqlite3\include
+- -> the .lib (and if available also the .exp) into sqlite3\lib
 - now copy the .dll from sqlite3\bin into both 'basefolder-of-MoviesCatalog'\X64\Debug and 'basefolder-of-MoviesCatalog'\X64\Release
 - Be sure you've done previous before opening the solution in MSVC, because the solution depends on the property file which will be extracted into 'basefolder-of-MoviesCatalog'\wx324
+
+
+*This file is rewritten in Ghostwriter*

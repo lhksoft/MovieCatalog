@@ -40,8 +40,6 @@ class MyApp : public wxApp
 public:
     MyApp();
 
-    wxFrame*                CreateChildFrame(wxView* view);
-
     // override some wxApp virtual methods
     virtual bool            OnInit() wxOVERRIDE;
     virtual int             OnExit() wxOVERRIDE;
@@ -59,5 +57,5 @@ private:
 wxDECLARE_APP(MyApp);
 
 #endif /* MAIN_H */
-/*********************************** end of main.h *************************************/
+/* ********************************** end of main.h ************************************ */
 

@@ -17,6 +17,7 @@
  * ********************************************************************************/
 #include "CanvasCtrl.h"
 #include <wx/bitmap.h>
+#include <wx/log.h>
 #include <wx/msgdlg.h>
 //#include <wx/dataobj.h>
 #include <wx/clipbrd.h>
@@ -82,16 +83,17 @@ bool CanvasCtrl::AcceptsFocus() const
 
 void CanvasCtrl::OnRightClick(wxMouseEvent& event)
 {
-#ifdef __WXDEBUG__
-	wxWindowDisabler wd(true);
+	if (wxLog::GetLogLevel() == wxLOG_Debug)
+	{
+		wxWindowDisabler wd(true);
 
-	wxSize sizeC = GetClientSize();
-	wxSize sizeF = GetSize();
-	wxString s; s.Printf(wxT("Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
-	wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
-#else
-	event.Skip();
-#endif // WXDEBUG
+		wxSize sizeC = GetClientSize();
+		wxSize sizeF = GetSize();
+		wxString s; s.Printf(wxT("Size\nwidth = %d | height = %d\n\nClient Size\nwidth = %d | height = %d"), sizeF.GetWidth(), sizeF.GetHeight(), sizeC.GetWidth(), sizeC.GetHeight());
+		wxMessageBox(s, wxT("For your information"), wxOK | wxICON_INFORMATION, this);
+	}
+	else
+		event.Skip();
 }
 
 void CanvasCtrl::OnBtnCopyTitle(wxCommandEvent& event)
