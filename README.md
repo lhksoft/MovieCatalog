@@ -41,12 +41,28 @@ LINUX :
 
 How to build (with CMake)
 ## Configure a release build
-- cmake -S . -B build/ -DCMAKE_BUILD_TYPE=Release
+
+```
+cmake -S . -B build/ -DCMAKE_BUILD_TYPE=Release
+```
+
+> If you want the binary to come into your local bin-folder (not globaly installed), use following (do not add /bin, it will come in bin anyhow) :
+```
+cmake -S . -B build/ -DCMAKE_BUILD_TYPE=Release --install-prefix=/home/<your-user-name>
+```
+
 ## Build release binaries
-- cmake --build build/
-## Install locally in HOME dir
-- cmake --install . --prefix ~/bin
-- > but apparently this seems not to work well, so better copy the binary from the .\build directory and copy it to where you desire
+
+```
+cmake --build build/
+```
+
+## Install
+
+```
+cmake --install build/
+```
+
 
 
 MSW :
