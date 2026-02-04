@@ -3,6 +3,11 @@ A program to catalog a private collection of movies inside a SQLite3 database us
 This program compiles and builds in MSVC (win32) and in linux(-mint).
 
 
+**Updates in 3.0.2.0 :**
+- Some enoying bugs has been removed : 
+  - A bug found in CStorage, when clicking the button to change the creation-date, the new date wouldn't come in the wxTextCtrl unless updating the record entirely. The fix is setting the new date through the TextCtrl's Validator instead of using SetText of the Ctrl.
+  - A bug in lkChkImgListbox, when more items in the listbox than the box could view, no scrollbars appeared. A call to measure-item wasn't made.
+- Canceling addition/modification of a record, you need to select the main-view (with your mouse), then press the Escape key.
 
 **Updates in 3.0.1.5 :**
 - It seems __WX_DEBUG__ is allways set, even if in Release mode, so I had to figure out some hack to have some debug-messages to hide in Release-build, but not when in Debug build.
@@ -13,10 +18,10 @@ This program compiles and builds in MSVC (win32) and in linux(-mint).
 - OpenImgDialog will open current image (if any) already in preview
 - Covers inside TMovies will be prefixed by a prefix-path (if set) in '[Movies]Covers' in the INI
 - Programmaticly possible to resort the covers on the local disk by setting [Compact]NewCovers and (if "[Movies]Covers" not set) setting [Compact]OldCovers.
-  -> 'NewCovers' directs to a non-existing path where the covers will be copied to
-  -> 'OldCovers' directs to the location where all Covers are currently stored
-  -> if either 'NewCovers' and/or 'OldCovers' does not contain any path-seperators, the program assumes it's a subdir for the default 'AppDataDir'
- - if '[Compact]Dry' is set when doing a Compact, only the covers are resorted (while the real Compact can take a very long time to complete)
+  - 'NewCovers' directs to a non-existing path where the covers will be copied to
+  - 'OldCovers' directs to the location where all Covers are currently stored
+  - if either 'NewCovers' and/or 'OldCovers' does not contain any path-seperators, the program assumes it's a subdir for the default 'AppDataDir'
+- if '[Compact]Dry' is set when doing a Compact, only the covers are resorted (while the real Compact can take a very long time to complete)
 - All Views will keep its current position on the screen, which are set in the config/ini file, so next time that view will come at the last position
 
 The sources requires wxWidgets 3.2.4 (or higher) to compile and operate properly. Version 324 is by default installed in linux using apt.
@@ -38,6 +43,19 @@ LINUX :
 - requires 'libsqlite3-dev'       (sudo apt update & sudo apt install libsqlite3-dev)
 - requires 'libgtk-3-0t64'        (this probably will be at your os by default, if not install it)
 - requires 'libgtk-3-dev'         (sudo apt update & sudo apt install libgtk-3-dev)
+
+```
+sudo apt update
+sudo apt install libwxbase3.2-1t64 libwxgtk-gl3.2-1t64 libwxgtk3.2-1t64 libwxgtk3.2-dev libsqlite3-0 libsqlite3-dev libgtk-3-0t64 libgtk-3-dev
+
+```
+
+When using VSCode, you also need to have CMake, GDB and build-essential at your system :
+```
+sudo apt update
+sudo apt install build-essential gdb cmake
+
+```
 
 How to build (with CMake)
 ## Configure a release build

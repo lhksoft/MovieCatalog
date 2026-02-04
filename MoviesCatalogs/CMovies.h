@@ -32,7 +32,7 @@
 #include "../lkSQLite3/lkDateTime.h"
 
 #include "../lkSQLite3/lkSQL3RecordSet.h"
-#include "../lkSQLite3/lkSQL3Field.h"
+// #include "../lkSQLite3/lkSQL3Field.h"
 
 ///////////////////////////////////////////////////////////////
 // class DlgMoviesFind

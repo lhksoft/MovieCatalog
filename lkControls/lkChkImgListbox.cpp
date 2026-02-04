@@ -294,13 +294,13 @@ void lkChkImgListbox::OnDrawItem(wxDC& dc, const wxRect& rect, size_t n) const
 }
 
 //virtual
-wxCoord lkChkImgListbox::OnMeasureItem(size_t WXUNUSED(n)) const
+wxCoord lkChkImgListbox::OnMeasureItem(size_t n) const
 {
     if ( m_nBestHeight > 0 )
         return m_nBestHeight;
 
     // else
-    return 0;
+    return lkImageBox::MeasureItem(n);
 }
 
 //virtual
@@ -651,7 +651,22 @@ void lkChkImgListbox::OnLeftClick(wxMouseEvent& event)
     int top = GetVisibleRowsBegin();
     nItem = top + point.y / cyItem;
 
-	if ( m_actAsCheckListbox )
+	if ( ! m_actAsCheckListbox )
+    {
+		if ( nItem >= 0 )
+		{
+			if ( HasMultipleSelection() )
+				Toggle((size_t)nItem);
+			else
+			{
+				if ( IsSelected((size_t)nItem) )
+					SetSelection(-1);
+				else
+					event.Skip(); // SetSelection(nItem);
+			}
+		}
+    }
+	else // if ( m_actAsCheckListbox )
 	{
 		wxRect rect = GetItemRect(nItem);
 		// convert item rect to check mark rect
@@ -700,21 +715,6 @@ void lkChkImgListbox::OnLeftClick(wxMouseEvent& event)
 			}
 		}
 	}
-    else
-    {
-		if ( nItem >= 0 )
-		{
-			if ( HasMultipleSelection() )
-				Toggle((size_t)nItem);
-			else
-			{
-				if ( IsSelected((size_t)nItem) )
-					SetSelection(-1);
-				else
-					event.Skip(); // SetSelection(nItem);
-			}
-		}
-    }
 }
 
 // send an "item checked" event

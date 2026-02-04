@@ -318,6 +318,15 @@ bool lkSQL3DateValidator::DateTimeToWindow(bool bAllowEmpty)
 	return true;
 }
 
+void lkSQL3DateValidator::SetDateToWindow(const lkDateTime& dt)
+{
+	if ( m_pDate )
+	{
+		*m_pDate = dt;
+		DateTimeToWindow();
+	}
+}
+
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------ //
 
 wxIMPLEMENT_DYNAMIC_CLASS(lkSQL3TextValidator, wxTextValidator)

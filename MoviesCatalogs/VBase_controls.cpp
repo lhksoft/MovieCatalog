@@ -116,7 +116,7 @@ wxString BaseCountryBox::GetFilter(const wxString& field) const
 	wxString res;
 	if ( IsEmpty() || field.IsEmpty())
 		return res; // nothing to do
-	wxASSERT(field[0] = '[');
+	wxASSERT(field[0] == '[');
 
 	wxString flt, s;
 	wxUint64 lParam;

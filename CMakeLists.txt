@@ -7,8 +7,8 @@ cmake_minimum_required (VERSION 3.24)
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 project("MovieCatalog"
-	DESCRIPTION "Movies Catalog using wxWidgets-3.2.4 and SQLite3"
-	VERSION 3.0.1.5
+	DESCRIPTION "Movies Catalog using wxWidgets-3.2.x and SQLite3"
+	VERSION 3.0.2.0
 	LANGUAGES CXX
 )
 

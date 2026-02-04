@@ -1,6 +1,6 @@
 /* ********************************************************************************
  * MoviesCatalog - a Programm to catalogue a private collection of Movies using SQLite3
- * Copyright (C) 2022 by Laurens Koehoorn (lhksoft)
+ * CopyLeft (C) 2022-'26 by Laurens Koehoorn (lhksoft)
  * 
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -128,13 +128,23 @@ void MainFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 {
 	wxAboutDialogInfo info;
 	info.SetName("Movies Catalog");
-	info.SetVersion("3.0.1.5", "3.0.1.5 product version 7.1.0.0");
-	info.SetDescription("Movies Catalog Program using wxWidgets 3.2.4 and SQLite3");
+	info.SetVersion("3.0.2.0", "3.0.2.0 product version 7.1.0.0");
+	info.SetDescription("Movies Catalog Program using wxWidgets 3.2.x and SQLite3");
 	wxString s;
-	s.Printf("CopyLeft %c 2015 - '16,2019,2021-'22, 2025 by LhK-Soft, Laurens H.Koehoorn", wxUniChar(0x00A9));
+	s.Printf("CopyLeft %c 2015-'16,2019,2021-'22, 2025-'26 by LhK-Soft, Laurens H.Koehoorn", wxUniChar(0x00A9));
 	info.SetCopyright(s);
 	info.AddDeveloper("Laurens Koehoorn");
 	info.SetIcon(Get_MoviesCatalog_Ico());
+	info.SetLicence(wxT("This program is free software: you can redistribute it and/or modify\n" \
+    	"it under the terms of the GNU General Public License as published by\n" \
+    	"the Free Software Foundation, either version 3 of the License, or\n" \
+    	"(at your option) any later version.\n\n" \
+    	"This program is distributed in the hope that it will be useful,\n" \
+    	"but WITHOUT ANY WARRANTY; without even the implied warranty of\n" \
+    	"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" \
+    	"GNU General Public License for more details.\n\n" \
+    	"You should have received a copy of the GNU General Public License\n" \
+    	"along with this program.  If not, see <https://www.gnu.org/licenses/>"));
 
 	wxAboutBox(info);
 }

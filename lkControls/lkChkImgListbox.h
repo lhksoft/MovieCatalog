@@ -44,7 +44,7 @@ public:
 
 	// required virtuals
 public:
-	virtual bool				IsSorted(void) const;
+	virtual bool				IsSorted(void) const wxOVERRIDE;
     virtual bool				SetFont(const wxFont& font) wxOVERRIDE;
 
 protected:

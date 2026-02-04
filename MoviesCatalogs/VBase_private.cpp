@@ -19,7 +19,7 @@
 #include "VBase.h"
 #include "VBase_validators.h"
 #include "VBase_controls.h"
-#include "ImageCtrl.h"
+// #include "ImageCtrl.h"
 #include "SimpleBox.h"
 #include "GroupCtrl.h"
 

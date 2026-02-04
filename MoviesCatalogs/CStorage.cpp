@@ -37,7 +37,7 @@
 #include "../lkControls/lkConfigTools.h"
 
 #include "../lkSQLite3/lkSQL3Validators.h"
-#include "../lkSQLite3/lkSQL3Exception.h"
+// #include "../lkSQLite3/lkSQL3Exception.h"
 
 #define conf_STORAGE_PATH			wxT("Storages")
 
@@ -247,10 +247,12 @@ void CStorage::OnSelectDate(wxCommandEvent& WXUNUSED(event))
 
 			if ( m_pCreaDate )
 			{
-				wxString szTxt = m_CreaDate.FormatFullDate_Dutch();
-				if ( szTxt.IsEmpty() )
-					szTxt = wxT("# unset #");
-				m_pCreaDate->SetLabel(szTxt);
+				wxValidator* pVal = m_pCreaDate->GetValidator();
+				if (pVal && wxDynamicCast(pVal, lkSQL3DateValidator))
+				{
+					lkSQL3DateValidator* pdVal = static_cast<lkSQL3DateValidator*>(pVal);
+					pdVal->SetDateToWindow(m_CreaDate);
+				}
 			}
 		}
 }

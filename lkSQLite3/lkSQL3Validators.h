@@ -66,7 +66,8 @@ public:
 	void						SetMinYear(int); // <0 will set it to default 1900, 0 = not using minimum when validating
 	void						SetMaxYear(int); // <0 will set it to default Current Year, 0 = not using maximum when validating
 
-	
+	// Transfer new value to the window, but not touching internal sql-field
+	void						SetDateToWindow(const lkDateTime&);
 
 protected:
 	lkSQL3RecordSet*			m_pRS;
